@@ -20,6 +20,7 @@ namespace _3._Scripts.Stages
 
         public List<Interactive.MiniGame> MiniGames { get; set; }
         public List<EnemyData> EnemyData => config.Enemies;
+        
         private readonly List<Bot> _currentBots = new();
         public Transform SpawnPoint => spawnPoint;
         public float GiftBooster => config.GiftBooster;

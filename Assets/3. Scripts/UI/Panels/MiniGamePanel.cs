@@ -10,6 +10,7 @@ using _3._Scripts.Inputs;
 using _3._Scripts.Localization;
 using _3._Scripts.MiniGame;
 using _3._Scripts.Player;
+using _3._Scripts.Stages;
 using _3._Scripts.UI.Effects;
 using _3._Scripts.UI.Elements;
 using _3._Scripts.UI.Enums;
@@ -25,10 +26,7 @@ namespace _3._Scripts.UI.Panels
 {
     public class MiniGamePanel : SimplePanel
     {
-        [Tab("Components")] [SerializeField] private CatchElement catchElementPrefab;
-
-        [SerializeField] private Transform fishElementsContainer;
-        [SerializeField] private Transform treasureElementsContainer;
+        [Tab("Components")] [SerializeField] private CatchList catchList;
         [SerializeField] private Button stopButton;
         [SerializeField] private List<Transform> deactivateComponents = new();
 
@@ -57,9 +55,7 @@ namespace _3._Scripts.UI.Panels
         private Tween _currentTween;
 
         private List<CatchData> _catchData = new();
-        private readonly List<CatchElement> _currentCatchElements = new();
 
-        private string _currentPondID;
         private float _fillAmount = 0.5f;
         private const float FillRate = 0.5f;
         private const float WinThreshold = 0.9f;
@@ -81,19 +77,19 @@ namespace _3._Scripts.UI.Panels
             CheckGameEnd();
         }
 
-        public void StartFishing(string pondID, Fighter player, Fighter enemy, List<CatchData> catchData,
+        public void StartFishing(Fighter player, Fighter enemy, List<CatchData> catchData,
             Action onStart, Action onEnd)
         {
             InitializeFighters(player, enemy);
             StartWaitStep();
 
-            _currentPondID = pondID;
             _fillAmount = 0.5f;
             _catchData = catchData;
             rewardCatch.SetState(false);
+            catchList.Initialize(StageController.Instance.CurrentStageID, catchData);
 
             SetComponentsState(false);
-            InitializeCatchElements();
+
             InputHandler.Instance.SetState(false);
             FishingLine.Instance.SetState(false);
 
@@ -114,57 +110,6 @@ namespace _3._Scripts.UI.Panels
             OnEnd?.Invoke();
 
             SetComponentsState(true);
-        }
-
-        private void OnEnable()
-        {
-            GBGames.saves.catchSave.OnCatchListUpdate += UpdateCatchList;
-        }
-
-        private void OnDisable()
-        {
-            GBGames.saves.catchSave.OnCatchListUpdate -= UpdateCatchList;
-        }
-
-        private void UpdateCatchList()
-        {
-            foreach (var element in _currentCatchElements)
-            {
-                var state = GBGames.saves.catchSave.CatchUnlocked(_currentPondID, element.Data.ID);
-                element.SetUnlockedState(state);
-            }
-        }
-
-        private void InitializeCatchElements()
-        {
-            if (_currentCatchElements.Count > 0)
-            {
-                foreach (var element in _currentCatchElements)
-                {
-                    Destroy(element.gameObject);
-                }
-
-                _currentCatchElements.Clear();
-            }
-
-            var fish = _catchData.Where(d => d.Type == CatchType.Fish);
-            var treasure = _catchData.Where(d => d.Type == CatchType.Treasure);
-
-            foreach (var data in fish)
-            {
-                var element = Instantiate(catchElementPrefab, fishElementsContainer);
-                element.Initialize(data);
-                _currentCatchElements.Add(element);
-            }
-
-            foreach (var data in treasure)
-            {
-                var element = Instantiate(catchElementPrefab, treasureElementsContainer);
-                element.Initialize(data);
-                _currentCatchElements.Add(element);
-            }
-
-            UpdateCatchList();
         }
 
         private void StartWaitStep()
@@ -228,7 +173,7 @@ namespace _3._Scripts.UI.Panels
 
             CameraController.Instance.SetShake(0);
             FishingLine.Instance.SetState(false);
-            GBGames.saves.catchSave.AddCatch(_currentPondID, catchReward.ID);
+            GBGames.saves.catchSave.AddCatch(StageController.Instance.CurrentStageID, catchReward.ID);
             StartCoroutine(RestartGame());
         }
 
@@ -262,7 +207,7 @@ namespace _3._Scripts.UI.Panels
         private IEnumerator RestartGame()
         {
             yield return new WaitForSeconds(2f);
-            StartFishing(_currentPondID, _player, _enemy, _catchData, OnStartFishing, OnEnd);
+            StartFishing(_player, _enemy, _catchData, OnStartFishing, OnEnd);
         }
 
         private CatchData GetRandomCatch()

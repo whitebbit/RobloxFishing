@@ -18,6 +18,7 @@ namespace GBGamesPlugin
         public SaveHandler<string> characterSaves = new();
         public SaveHandler<string> trailSaves = new();
         public SaveHandler<string> upgradeSaves = new();
+        public RangSave rangSaves = new();
         public WalletSave walletSave = new();
         public PetSave petsSave = new();
         public DailyRewardSave dailyReward = new();

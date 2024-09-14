@@ -7,6 +7,7 @@ using _3._Scripts.Inputs;
 using _3._Scripts.Interactive.Interfaces;
 using _3._Scripts.MiniGame;
 using _3._Scripts.Player;
+using _3._Scripts.Stages;
 using _3._Scripts.Tutorial;
 using _3._Scripts.UI;
 using _3._Scripts.UI.Elements;
@@ -27,9 +28,7 @@ namespace _3._Scripts.Interactive
         private Enemy enemyPrefab;
 
         [SerializeField] private CinemachineVirtualCamera virtualCamera;
-        [Tab("Catch List")] [SerializeField] private CatchElement catchElementPrefab;
-        [SerializeField] private Transform fishContainer;
-        [SerializeField] private Transform treasureContainer;
+        [Tab("Catch List")] [SerializeField] private CatchList catchList;
 
         [Tab("Transforms")] [SerializeField] private Transform playerPoint;
         [SerializeField] private Transform lookPoint;
@@ -40,26 +39,6 @@ namespace _3._Scripts.Interactive
         private Fighter _enemy;
         private bool _fightStarted;
 
-        private List<CatchElement> _catchElements = new();
-
-        private void OnEnable()
-        {
-            GBGames.saves.catchSave.OnCatchListUpdate += UpdateCatchList;
-        }
-
-        private void OnDisable()
-        {
-            GBGames.saves.catchSave.OnCatchListUpdate -= UpdateCatchList;
-        }
-
-        private void UpdateCatchList()
-        {
-            foreach (var element in _catchElements)
-            {
-                var state = GBGames.saves.catchSave.CatchUnlocked(_enemyData.ID, element.Data.ID);
-                element.SetUnlockedState(state);
-            }
-        }
 
         public void Initialize(EnemyData data)
         {
@@ -74,39 +53,7 @@ namespace _3._Scripts.Interactive
 
             _enemy = enemy;
 
-            InitializeCatchList();
-        }
-
-        private void InitializeCatchList()
-        {
-            foreach (GameObject obj in fishContainer)
-            {
-                Destroy(obj);
-            }
-
-            foreach (GameObject obj in treasureContainer)
-            {
-                Destroy(obj);
-            }
-
-            var fish = _enemyData.CatchData.Where(d => d.Type == CatchType.Fish);
-            var treasure = _enemyData.CatchData.Where(d => d.Type == CatchType.Treasure);
-
-            foreach (var data in fish)
-            {
-                var element = Instantiate(catchElementPrefab, fishContainer);
-                element.Initialize(data);
-                _catchElements.Add(element);
-            }
-
-            foreach (var data in treasure)
-            {
-                var element = Instantiate(catchElementPrefab, treasureContainer);
-                element.Initialize(data);
-                _catchElements.Add(element);
-            }
-
-            UpdateCatchList();
+            catchList.Initialize(StageController.Instance.CurrentStageID, data.CatchData);
         }
 
         private void Start()
@@ -131,7 +78,7 @@ namespace _3._Scripts.Interactive
             var player = Player.Player.instance;
 
             panel.Enabled = true;
-            panel.StartFishing(_enemyData.ID, Player.Player.instance, _enemy, _enemyData.CatchData, StartFishing,
+            panel.StartFishing(Player.Player.instance, _enemy, _enemyData.CatchData, StartFishing,
                 EndFishing);
 
             useTutorialObject.gameObject.SetActive(false);
@@ -149,7 +96,6 @@ namespace _3._Scripts.Interactive
 
         private void StartFishing()
         {
-            
             FishingLine.Instance.SetState(true);
             FishingLine.Instance.SetTarget(lookPoint.transform);
         }
@@ -163,7 +109,7 @@ namespace _3._Scripts.Interactive
 
             player.PetsHandler.SetState(true);
             panel.Enabled = false;
-            
+
             FishingLine.Instance.SetState(false);
             CameraController.Instance.SetShake(0);
             CameraController.Instance.SwapToMain();

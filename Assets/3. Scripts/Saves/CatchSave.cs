@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace _3._Scripts.Saves
 {
@@ -7,28 +8,24 @@ namespace _3._Scripts.Saves
     public class CatchSave
     {
         public event Action OnCatchListUpdate;
-        public Dictionary<string, List<string>> catchList = new();
-
-        public bool CatchUnlocked(string pondID, string catchID)
+        public List<string> catchList = new();
+        
+        public bool CatchUnlocked(int stageID, string catchID)
         {
-            return catchList.ContainsKey(pondID) && catchList[pondID].Contains(catchID);
+            return catchList.Contains(CatchID(stageID, catchID));
         }
-
-        public void AddCatch(string pondID, string catchID)
+        
+        public void AddCatch(int stageID, string catchID)
         {
-            if (catchList.ContainsKey(pondID))
-            {
-                if (catchList[pondID].Contains(catchID))
-                    return;
-                catchList[pondID].Add(catchID);
-            }
-            else
-            {
-                catchList.Add(pondID, new List<string>());
-                catchList[pondID].Add(catchID);
-            }
+            if(!CatchUnlocked(stageID, catchID))
+                catchList.Add(CatchID(stageID, catchID));
 
             OnCatchListUpdate?.Invoke();
+        }
+
+        private string CatchID(int stageID, string catchID)
+        {
+            return $"{stageID}_{catchID}";
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using _3._Scripts.MiniGame;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -26,5 +27,6 @@ namespace _3._Scripts.Enemies.Scriptable
 
         public List<CatchData> CatchData => catchData;
         public ComplexityType ComplexityType => complexityType;
+        
     }
 }

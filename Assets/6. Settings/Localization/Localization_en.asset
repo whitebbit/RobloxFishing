@@ -436,6 +436,18 @@ MonoBehaviour:
     m_Localized: Treasure
     m_Metadata:
       m_Items: []
+  - m_Id: 43663403419574272
+    m_Localized: Aura
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43663791967313920
+    m_Localized: Fish Index
+    m_Metadata:
+      m_Items: []
+  - m_Id: 44050783074918400
+    m_Localized: Beginner
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:

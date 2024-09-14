@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using _3._Scripts.Enemies.Scriptable;
+using _3._Scripts.MiniGame;
 using _3._Scripts.Saves;
 using _3._Scripts.Singleton;
+using _3._Scripts.Stages.Scriptable;
 using _3._Scripts.Wallet;
 using GBGamesPlugin;
 using UnityEngine;
@@ -13,7 +16,7 @@ namespace _3._Scripts.Stages
     public class StageController : Singleton<StageController>
     {
         [SerializeField] private List<World> worlds = new();
-     
+
         public Stage CurrentStage { get; private set; }
         public int CurrentStageID { get; private set; }
 
@@ -46,7 +49,7 @@ namespace _3._Scripts.Stages
         {
             GBGames.saves.worldID += 1;
             GBGames.saves.stageID = 0;
-            
+
             Player.Player.instance.Reborn();
             TeleportToStage(0);
         }
@@ -75,6 +78,31 @@ namespace _3._Scripts.Stages
             stage.Initialize();
 
             Player.Player.instance.Teleport(spawnPoint);
+        }
+
+        public Dictionary<int, List<CatchData>> GetAllData()
+        {
+            var list = new Dictionary<int, List<CatchData>>();
+            foreach (var world in worlds)
+            {
+                foreach (var stage in world.Stages)
+                {
+                    var stageCatchList = new List<CatchData>();
+                    foreach (var data in stage.EnemyData)
+                    {
+                        stageCatchList.AddRange(data.CatchData);
+                    }
+                    
+                    var uniqueElements = stageCatchList
+                        .GroupBy(e => e.ID)
+                        .Select(group => group.First())
+                        .ToList();
+
+                    list.Add(stage.ID, uniqueElements);
+                }
+            }
+
+            return list;
         }
     }
 }
