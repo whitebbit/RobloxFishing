@@ -88,7 +88,8 @@ namespace _3._Scripts.Interactive
             player.transform.DOLookAt(lookPoint.transform.position, 0, AxisConstraint.Y);
 
             useTutorialObject.gameObject.SetActive(false);
-
+            
+            FishingLine.Instance.SetState(false);
             CameraController.Instance.SwapTo(virtualCamera);
 
             useTutorialObject.gameObject.SetActive(false);
