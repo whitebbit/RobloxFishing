@@ -60,7 +60,7 @@ MonoBehaviour:
     m_Left: 25
     m_Right: 0
     m_Top: 5
-    m_Bottom: 0
+    m_Bottom: 25
   m_ChildAlignment: 1
   m_Spacing: 0
   m_ChildForceExpandWidth: 1
@@ -82,7 +82,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 552dcf8ef78e431aa33e21f7fb4abd72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  catchElementPrefab: {fileID: 384468913901078639, guid: ecfc3ad885481b24a958385e336f6691, type: 3}
+  catchElementPrefab: {fileID: 384468913901078639, guid: efaa5b0ca30ae324d8cd1d664778b4aa, type: 3}
   fishContainer: {fileID: 2950078349344229337}
   treasureContainer: {fileID: 6661728671860885026}
 --- !u!114 &482117921189019306

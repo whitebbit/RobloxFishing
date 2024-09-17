@@ -107,11 +107,8 @@ namespace _3._Scripts.Pets
             panel.Enabled = true;
             var pet = GetRandomPet();
             panel.UnlockPet(pet);
-            
+
             SelectBest();
-            
-            if (pet.Rarity == Rarity.Legendary)
-                GBGames.saves.achievementSaves.Update("legendary_pet", 1);
         }
 
         private void SelectBest()
@@ -120,13 +117,14 @@ namespace _3._Scripts.Pets
             if (best.Count <= 0) return;
 
             Player.Player.instance.PetsHandler.ClearPets();
-            
+
             for (var i = 0; i < 3; i++)
             {
-                if(i >= best.Count) continue;
+                if (i >= best.Count) continue;
                 var player = Player.Player.instance.transform;
                 var position = player.position + player.right * 2;
                 Player.Player.instance.PetsHandler.CreatePet(best[i], position);
+                GBGames.saves.petsSave.Select(best[i].id);
             }
 
             GBGames.instance.Save();

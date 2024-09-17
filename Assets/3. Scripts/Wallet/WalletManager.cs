@@ -100,5 +100,14 @@ namespace _3._Scripts.Wallet
                 _ => (number / 1_000_000_000_000_000_000_000m).ToString("0.#") + "Sx"
             };
         }
+        
+        public static string ConvertToPercentageOrFraction(double value)
+        {
+            if (!(value < 0.1)) return $"{value:F1}%";
+            
+            var reciprocal = Math.Round(1 / value);
+            
+            return $"1/{reciprocal:N0}";
+        }
     }
 }

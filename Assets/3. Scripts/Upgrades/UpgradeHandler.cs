@@ -24,6 +24,8 @@ namespace _3._Scripts.Upgrades
             var hand = Configuration.Instance.AllUpgrades.FirstOrDefault(u => u.ID == id);
             if (hand is null) return;
             _characterHandler.Current.SetUpgrade(hand);
+            Debug.Log(id);
+
         }
     }
 }

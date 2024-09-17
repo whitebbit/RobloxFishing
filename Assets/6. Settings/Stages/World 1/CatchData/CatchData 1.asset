@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: CatchData 1
   m_EditorClassIdentifier: 
   id: test_2
-  icon: {fileID: 21300000, guid: 13a8df6781d714e6a998907359825852, type: 3}
-  dropChance: 1
+  icon: {fileID: 21300000, guid: 5cf538fcf439a49d48fcf2995f950403, type: 3}
+  dropChance: 0.01
   reward: 10
   rarity: 1
   type: 1

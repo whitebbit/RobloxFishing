@@ -12,8 +12,8 @@ namespace _3._Scripts.UI.Scriptable.Shop
         [SerializeField] private float booster;
         [SerializeField] private Color color;
 
-        [Tab("Prefab")] [SerializeField]
-        private FishingRod prefab;
+        [Tab("Prefab")] 
+        [SerializeField] private FishingRod prefab;
 
         
         [SerializeField] private Material mainMaterial;

@@ -23,6 +23,7 @@ namespace _3._Scripts.Player
         public CharacterHandler CharacterHandler { get; private set; }
         public UpgradeHandler UpgradeHandler { get; private set; }
         public PlayerAnimator PlayerAnimator { get; private set; }
+        public PlayerAura PlayerAura { get; private set; }
 
         public static Player instance;
         private CharacterController _characterController;
@@ -37,6 +38,7 @@ namespace _3._Scripts.Player
             CharacterHandler = new CharacterHandler();
             UpgradeHandler = new UpgradeHandler(CharacterHandler);
             TrailHandler = new TrailHandler(GetComponent<PlayerMovement>(), trail);
+            PlayerAura = new PlayerAura(transform);
             _characterController = GetComponent<CharacterController>();
         }
 
@@ -45,7 +47,7 @@ namespace _3._Scripts.Player
             var photo =
                 Configuration.Instance.AllCharacters.FirstOrDefault(c => c.ID == GBGames.saves.characterSaves.current)
                     ?.Icon;
-            
+
             return new FighterData
             {
                 photo = photo,
@@ -78,7 +80,6 @@ namespace _3._Scripts.Player
         {
             base.PutFish();
             Animator().SetTrigger("PutFish");
-            
         }
 
         public override void EndFishing()
@@ -89,7 +90,15 @@ namespace _3._Scripts.Player
 
         public float GetTrainingStrength()
         {
-            return 1;
+            var upgrade =
+                Configuration.Instance.AllUpgrades.FirstOrDefault(u => u.ID == GBGames.saves.upgradeSaves.current);
+            var petsBooster = GBGames.saves.petsSave.selected.Sum(p => p.booster);
+
+            if (upgrade is null) return 1;
+           
+            var value = upgrade.Booster + upgrade.Booster * petsBooster / 100;
+            return value;
+
         }
 
         public void Teleport(Vector3 position)
@@ -110,6 +119,7 @@ namespace _3._Scripts.Player
             InitializeTrail();
             InitializePets();
             InitializeUpgrade();
+            InitializeAura();
         }
 
         public void Reborn()
@@ -125,7 +135,7 @@ namespace _3._Scripts.Player
 
             Initialize();
         }
-        
+
         private void InitializeCharacter()
         {
             var id = GBGames.saves.characterSaves.current;
@@ -136,6 +146,12 @@ namespace _3._Scripts.Player
         {
             var id = GBGames.saves.upgradeSaves.current;
             UpgradeHandler.SetUpgrade(id);
+        }
+
+        private void InitializeAura()
+        {
+            var id = GBGames.saves.auraSaves.current;
+            PlayerAura.Initialize(id);
         }
 
         private void InitializeTrail()

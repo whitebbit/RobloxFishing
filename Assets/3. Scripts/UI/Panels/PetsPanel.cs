@@ -22,8 +22,7 @@ namespace _3._Scripts.UI.Panels
         [SerializeField] private Transform container;
         [Tab("Selected")] [SerializeField] private PetSlot selected;
         [SerializeField] private PetBooster booster;
-        [Tab("Buttons")] [SerializeField] private Button select;
-        [SerializeField] private Button unselect;
+        [Tab("Buttons")]
         [SerializeField] private Button remove;
         [SerializeField] private Button selectBest;
 
@@ -36,8 +35,6 @@ namespace _3._Scripts.UI.Panels
             OutTransition = transition;
 
             booster.gameObject.SetActive(false);
-            //select.onClick.AddListener(SelectCurrent);
-            //unselect.onClick.AddListener(UnselectCurrent);
             remove.onClick.AddListener(Remove);
             selectBest.onClick.AddListener(SelectBest);
         }

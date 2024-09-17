@@ -58,7 +58,7 @@ namespace _3._Scripts.UI.Panels
 
         private float _fillAmount = 0.5f;
         private const float FillRate = 0.5f;
-        private const float WinThreshold = 0.9f;
+        private const float WinThreshold = 0.95f;
         private bool _started;
 
         private void Start()
@@ -212,13 +212,14 @@ namespace _3._Scripts.UI.Panels
 
         private CatchData GetRandomCatch()
         {
-            var totalWeight = _catchData.Sum(d => d.DropChance);
+            var playerAura = Player.Player.instance.PlayerAura;
+            var totalWeight = _catchData.Sum(d => playerAura.CalculateCatchChance(d.DropChance));
             var randomValue = UnityEngine.Random.Range(0, totalWeight);
             var cumulativeWeight = 0f;
 
             foreach (var petData in _catchData)
             {
-                cumulativeWeight += petData.DropChance;
+                cumulativeWeight += playerAura.CalculateCatchChance(petData.DropChance);
                 if (randomValue <= cumulativeWeight)
                 {
                     return petData;

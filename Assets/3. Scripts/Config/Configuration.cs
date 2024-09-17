@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using _3._Scripts.Achievements.Scriptables;
+using _3._Scripts.Aura.Scriptables;
 using _3._Scripts.Characters;
 using _3._Scripts.Currency.Enums;
 using _3._Scripts.Currency.Scriptable;
@@ -24,17 +25,18 @@ namespace _3._Scripts.Config
         [SerializeField] private List<TrailItem> allTrails = new();
         [SerializeField] private List<PetData> allPets = new();
         [SerializeField] private List<UpgradeItem> allUpgrades = new();
+        [SerializeField] private List<AuraData> allAuras = new();
         [SerializeField] private List<AchievementData> achievementData = new();
-
-
+        
         public bool InterByTime => interByTime.Value;
         public IEnumerable<PetData> AllPets => allPets;
         public IEnumerable<AchievementData> AchievementData => achievementData;
-
         public IEnumerable<UpgradeItem> AllUpgrades => allUpgrades;
+        public IEnumerable<AuraData> AllAuras => allAuras;
         public IEnumerable<CharacterItem> AllCharacters => allCharacters;
-
         public IEnumerable<TrailItem> AllTrails => allTrails;
+        
+        
         public CurrencyData GetCurrency(CurrencyType type) => currencyData.FirstOrDefault(c => c.Type == type);
         public PetData GetPet(string id) => AllPets.FirstOrDefault(p => p.ID == id);
 

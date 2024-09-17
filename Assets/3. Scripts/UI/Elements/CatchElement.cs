@@ -2,6 +2,7 @@
 using System.Linq;
 using _3._Scripts.MiniGame;
 using _3._Scripts.UI.Structs;
+using _3._Scripts.Wallet;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
@@ -26,7 +27,7 @@ namespace _3._Scripts.UI.Elements
             Data = data;
             icon.sprite = data.Icon;
             rareImage.color = rarityTables.FirstOrDefault(r => r.Rarity == data.Rarity).MainColor;
-            chanceText.text = $"{data.DropChance}%";
+            chanceText.text = $"{WalletManager.ConvertToPercentageOrFraction(data.DropChance)}";
         }
 
         public void SetUnlockedState(bool state)
