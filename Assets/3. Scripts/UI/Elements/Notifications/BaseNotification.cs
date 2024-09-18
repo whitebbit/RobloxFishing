@@ -10,15 +10,17 @@ namespace _3._Scripts.UI.Elements.Notifications
     [Serializable]
     public class BaseNotification
     {
+        public string ID { get; private set; }
         private Transform _notificationObject;
         private FuncPredicate _funcPredicate;
 
         private bool _active;
         private Tween _currentTween;
 
-        public BaseNotification(Transform notificationObject, FuncPredicate predicateToShow)
+        public BaseNotification(NotificationItem item, FuncPredicate predicateToShow)
         {
-            _notificationObject = notificationObject;
+            ID = item.NotificationID;
+            _notificationObject = item.NotificationObject;
             _funcPredicate = predicateToShow;
         }
 
@@ -39,7 +41,7 @@ namespace _3._Scripts.UI.Elements.Notifications
         {
             if(_active) return;
             
-            if(_funcPredicate.Evaluate()) return;
+            if(!_funcPredicate.Evaluate()) return;
             
             _active = true;
             _notificationObject.gameObject.SetActive(true);

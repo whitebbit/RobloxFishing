@@ -19,4 +19,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: eee379239f92f524bae390bb09609250, type: 2}
   - {fileID: 11400000, guid: be3ec8cb90b1b834ea63e75959376d98, type: 2}
   complexityType: 0
-  npcModel: {fileID: -8679921383154817045, guid: 170012e5b09c8a142af7dd463d604c1a, type: 3}
+  skin: {fileID: 2100000, guid: bfd4e0ef05d94c6448c690ef85625c20, type: 2}

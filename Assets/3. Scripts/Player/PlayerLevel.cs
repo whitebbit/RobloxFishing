@@ -41,7 +41,7 @@ namespace _3._Scripts.Player
             
             var normalizedPower = Math.Log10(newValue);
             var swords = Configuration.Instance.AllUpgrades.OrderBy(obj => obj.Booster).ToList();
-            var characters = Configuration.Instance.AllCharacters.OrderBy(obj => obj.Booster).ToList();
+            var characters = Configuration.Instance.AllCharacters.OrderBy(obj => obj.Price).ToList();
 
             var currentSword =
                 Configuration.Instance.AllUpgrades.FirstOrDefault(s => GBGames.saves.upgradeSaves.IsCurrent(s.ID));

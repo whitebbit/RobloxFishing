@@ -17,7 +17,8 @@ namespace _3._Scripts.Player
     public class Player : Fighter
     {
         [SerializeField] private TrailRenderer trail;
-
+        [SerializeField] private Character character;
+        
         public PetsHandler PetsHandler { get; private set; }
         public TrailHandler TrailHandler { get; private set; }
         public CharacterHandler CharacterHandler { get; private set; }
@@ -35,7 +36,7 @@ namespace _3._Scripts.Player
 
             PlayerAnimator = GetComponent<PlayerAnimator>();
             PetsHandler = new PetsHandler();
-            CharacterHandler = new CharacterHandler();
+            CharacterHandler = new CharacterHandler(character);
             UpgradeHandler = new UpgradeHandler(CharacterHandler);
             TrailHandler = new TrailHandler(GetComponent<PlayerMovement>(), trail);
             PlayerAura = new PlayerAura(transform);
@@ -44,13 +45,12 @@ namespace _3._Scripts.Player
 
         public override FighterData FighterData()
         {
-            var photo =
-                Configuration.Instance.AllCharacters.FirstOrDefault(c => c.ID == GBGames.saves.characterSaves.current)
-                    ?.Icon;
+            var character =
+                Configuration.Instance.AllCharacters.FirstOrDefault(c => c.ID == GBGames.saves.characterSaves.current);
 
             return new FighterData
             {
-                photo = photo,
+                photo = RuntimeSkinIconRenderer.Instance.GetTexture2D(character.ID, character.Skin),
                 health = 0,
                 strength = BoostersHandler.Instance.GetBoosterState("slap_booster")
                     ? WalletManager.FirstCurrency * 2
@@ -139,7 +139,7 @@ namespace _3._Scripts.Player
         private void InitializeCharacter()
         {
             var id = GBGames.saves.characterSaves.current;
-            CharacterHandler.SetCharacter(id, transform);
+            CharacterHandler.SetCharacter(id);
         }
 
         public void InitializeUpgrade()

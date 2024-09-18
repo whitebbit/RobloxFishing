@@ -35,8 +35,12 @@ namespace _3._Scripts.Player
         }
 
         private void TryEndTraining()
-        {          
-            if (UIManager.Instance.Active) return;
+        {
+            if (UIManager.Instance.Active && _trainingStarted)
+            {
+                EndTraining();
+                return;
+            }
 
             EndByTimer();
             EndByDistance();

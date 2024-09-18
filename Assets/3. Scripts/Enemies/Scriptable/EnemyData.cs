@@ -18,10 +18,10 @@ namespace _3._Scripts.Enemies.Scriptable
         [SerializeField] private List<CatchData> catchData = new();
         [SerializeField] private ComplexityType complexityType;
         [Tab("View")]
-        [SerializeField] private Transform npcModel;
+        [SerializeField] private Material skin;
 
         public string ID => id;
-        public Transform NpcModel => npcModel;
+        public Material Skin => skin;    
         public string LocalizationID => localizationID;
         public float Strength => strength;
 

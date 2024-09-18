@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using _3._Scripts.Enemies.Scriptable;
 using _3._Scripts.Localization;
 using _3._Scripts.MiniGame;
 using _3._Scripts.MiniGame.Interfaces;
 using _3._Scripts.Player;
 using _3._Scripts.Wallet;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Localization.Components;
 using VInspector;
@@ -14,11 +16,14 @@ namespace _3._Scripts.Enemies
 {
     public class Enemy : Fighter
     {
-        [Tab("Components")] [SerializeField, Min(1)]
-        private float attackSpeed;
+        [Tab("Components")] [SerializeField]
+        private List<SkinnedMeshRenderer> skinnedMeshRenderers = new();
+
+        
 
         [SerializeField] private PlayerAnimator animator;
-        [Tab("Texts")] [SerializeField] private Transform allTexts;
+        [Tab("Texts")] 
+        [SerializeField] private Transform allTexts;
         [Space] [SerializeField] private LocalizeStringEvent nameText;
         [SerializeField] private LocalizeStringEvent complexityText;
         [SerializeField] private LocalizeStringEvent recommendationText;
@@ -27,14 +32,11 @@ namespace _3._Scripts.Enemies
 
         public void Initialize(EnemyData data)
         {
-            var obj = Instantiate(data.NpcModel, transform);
-            var anim = obj.GetComponent<Animator>();
-
-            obj.localScale = Vector3.one * 0.5f;
-            obj.localPosition = Vector3.zero;
-
-            anim.enabled = false;
-
+            foreach (var skinnedMesh in skinnedMeshRenderers)
+            {
+                skinnedMesh.material = data.Skin;
+            }
+            
             _fighterData = new FighterData
             {
                 health = 0,
@@ -44,7 +46,6 @@ namespace _3._Scripts.Enemies
 
             InitializeText(data);
 
-            animator.SetAvatar(anim.avatar);
             animator.SetSpeed(0);
             animator.SetGrounded(true);
         }

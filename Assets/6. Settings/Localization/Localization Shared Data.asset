@@ -423,6 +423,10 @@ MonoBehaviour:
     m_Key: fishing_rods
     m_Metadata:
       m_Items: []
+  - m_Id: 45186517873860608
+    m_Key: locked
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

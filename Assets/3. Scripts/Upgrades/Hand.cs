@@ -16,9 +16,9 @@ namespace _3._Scripts.Upgrades
 
                 var transform1 = _fishingRod.transform;
 
-                transform1.localPosition = new Vector3(-0.202000007f,0.591000021f,-0.89200002f);
-                transform1.localEulerAngles = new Vector3(24.615036f,113.971527f,72.0930099f);
-                transform1.localScale = new Vector3(0.119999997f, 0.119999997f, 0.119999997f);
+                transform1.localPosition = new Vector3(-0.000780000002f,0.000760000024f,0.000590000011f);
+                transform1.localEulerAngles = new Vector3(34.8264999f,25.0290527f,260.1604f);
+                transform1.localScale = Vector3.one;
             }
 
             _fishingRod.Initialize(item);

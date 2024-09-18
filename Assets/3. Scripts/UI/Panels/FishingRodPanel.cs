@@ -22,10 +22,7 @@ namespace _3._Scripts.UI.Panels
         protected override void OnOpen()
         {
             base.OnOpen();
-            foreach (var item in _list)
-            {
-                item.UpdateButtonState();
-            }
+            UpdateAllList();
         }
 
         private void InitializeList()
@@ -35,7 +32,16 @@ namespace _3._Scripts.UI.Panels
             {
                 var table = Instantiate(prefab, container);
                 table.Initialize(item);
+                table.ONSelect += UpdateAllList;
                 _list.Add(table);
+            }
+        }
+
+        private void UpdateAllList()
+        {
+            foreach (var item in _list)
+            {
+                item.UpdateButtonState();
             }
         }
     }
