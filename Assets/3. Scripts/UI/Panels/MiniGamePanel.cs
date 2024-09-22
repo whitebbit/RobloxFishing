@@ -6,6 +6,7 @@ using _3._Scripts.Ads;
 using _3._Scripts.Boosters;
 using UnityEngine;
 using _3._Scripts.Currency.Enums;
+using _3._Scripts.Enemies.Scriptable;
 using _3._Scripts.Inputs;
 using _3._Scripts.Localization;
 using _3._Scripts.MiniGame;
@@ -54,7 +55,7 @@ namespace _3._Scripts.UI.Panels
 
         private Tween _currentTween;
 
-        private List<CatchData> _catchData = new();
+        private EnemyData _currentEnemy;
 
         private float _fillAmount = 0.5f;
         private const float FillRate = 0.5f;
@@ -69,6 +70,7 @@ namespace _3._Scripts.UI.Panels
         private void Update()
         {
             Player.Player.instance.UpgradeHandler.FishingRod.SetState(true);
+            FishingLine.Instance.SetState(true);
 
             if (!_started) return;
 
@@ -90,16 +92,16 @@ namespace _3._Scripts.UI.Panels
             upgradeHandler?.FishingRod.SetState(false);
         }
 
-        public void StartFishing(Fighter player, Fighter enemy, List<CatchData> catchData,
+        public void StartFishing(Fighter player, Fighter enemy, EnemyData data,
             Action onStart, Action onEnd)
         {
             InitializeFighters(player, enemy);
             StartWaitStep();
 
             _fillAmount = 0.5f;
-            _catchData = catchData;
+            _currentEnemy = data;
             rewardCatch.SetState(false);
-            catchList.Initialize(StageController.Instance.CurrentStageID, catchData);
+            catchList.Initialize(StageController.Instance.CurrentStageID, _currentEnemy.CatchData);
 
             SetComponentsState(false);
 
@@ -225,17 +227,18 @@ namespace _3._Scripts.UI.Panels
         private IEnumerator RestartGame()
         {
             yield return new WaitForSeconds(2f);
-            StartFishing(_player, _enemy, _catchData, OnStartFishing, OnEnd);
+            StartFishing(_player, _enemy, _currentEnemy, OnStartFishing, OnEnd);
         }
 
         private CatchData GetRandomCatch()
         {
             var playerAura = Player.Player.instance.PlayerAura;
-            var totalWeight = _catchData.Sum(d => playerAura.CalculateCatchChance(d.DropChance));
+            var totalWeight = _currentEnemy.CatchData.Sum(d => playerAura.CalculateCatchChance(d.DropChance +
+                _currentEnemy.AdditionalDropChance));
             var randomValue = UnityEngine.Random.Range(0, totalWeight);
             var cumulativeWeight = 0f;
 
-            foreach (var petData in _catchData)
+            foreach (var petData in _currentEnemy.CatchData)
             {
                 cumulativeWeight += playerAura.CalculateCatchChance(petData.DropChance);
                 if (randomValue <= cumulativeWeight)

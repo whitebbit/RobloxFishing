@@ -26,7 +26,6 @@ namespace _3._Scripts.Interactive
     {
         [Tab("Fight components")] [SerializeField]
         private Enemy enemyPrefab;
-
         [SerializeField] private CinemachineVirtualCamera virtualCamera;
         [Tab("Catch List")] [SerializeField] private CatchList catchList;
 
@@ -78,7 +77,7 @@ namespace _3._Scripts.Interactive
             var player = Player.Player.instance;
 
             panel.Enabled = true;
-            panel.StartFishing(Player.Player.instance, _enemy, _enemyData.CatchData, StartFishing,
+            panel.StartFishing(Player.Player.instance, _enemy, _enemyData, StartFishing,
                 EndFishing);
 
             useTutorialObject.gameObject.SetActive(false);

@@ -15,12 +15,17 @@ namespace _3._Scripts.Enemies.Scriptable
         [SerializeField] private string localizationID;
         [Tab("Settings")]
         [SerializeField] private float strength;
+
+        [SerializeField] private float additionalDropChance;
+        
         [SerializeField] private List<CatchData> catchData = new();
         [SerializeField] private ComplexityType complexityType;
         [Tab("View")]
         [SerializeField] private Material skin;
 
         public string ID => id;
+
+        public float AdditionalDropChance => additionalDropChance;
         public Material Skin => skin;    
         public string LocalizationID => localizationID;
         public float Strength => strength;
