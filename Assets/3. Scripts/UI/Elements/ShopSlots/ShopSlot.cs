@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using _3._Scripts.Config;
 using _3._Scripts.Localization;
 using _3._Scripts.UI.Scriptable.Shop;
 using _3._Scripts.UI.Structs;
@@ -23,8 +24,8 @@ namespace _3._Scripts.UI.Elements.ShopSlots
         
         public override void SetView(ShopItem item)
         {
-            var rarity = rarityTables.FirstOrDefault(r => r.Rarity == item.Rarity);
-            table.sprite = rarity.Table;
+            var rarity = Configuration.Instance.GetRarityTable(item.Rarity);
+            table.color = rarity.MainColor;
             glow.color = rarity.MainColor;
             backGlow.color = rarity.AdditionalColor;
             icon.sprite = item.Icon;

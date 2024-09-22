@@ -1,4 +1,5 @@
-﻿using _3._Scripts.Pets.Scriptables;
+﻿using _3._Scripts.Pets;
+using _3._Scripts.Pets.Scriptables;
 using _3._Scripts.Saves;
 using GBGamesPlugin;
 using UnityEngine;
@@ -22,6 +23,7 @@ namespace _3._Scripts.UI.Scriptable.Roulette
         public override void OnReward()
         {
             GBGames.saves.petsSave.Unlock(data);
+            PetUnlocker.SelectBest();
         }
     }
 }

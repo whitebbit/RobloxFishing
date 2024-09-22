@@ -7,9 +7,12 @@ namespace _3._Scripts.Actions
 {
     public class TrainingPond : MonoBehaviour
     {
-        [Tab("Components")] [SerializeField] private Transform pond;
+        [Tab("Components")] 
+        [SerializeField] private Transform pond;
         [SerializeField] private Player.Player player;
+        [SerializeField] private Transform fishingFloatPoint;
 
+        public Transform FishingFloatPoint => fishingFloatPoint;
         private bool _active;
 
         private void Start()

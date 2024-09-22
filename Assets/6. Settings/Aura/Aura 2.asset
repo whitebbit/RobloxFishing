@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6461e24b62d443a962e6542570668b2, type: 3}
+  m_Name: Aura 2
+  m_EditorClassIdentifier: 
+  treasure: {fileID: 11400000, guid: 35da5b57e1037ca44ba209b0e5ed528e, type: 2}
+  prefab: {fileID: 5874614900375033589, guid: 582bfad1927fd824cbbe12bfec7d99fb, type: 3}
+  booster: 20

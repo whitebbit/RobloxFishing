@@ -9,25 +9,30 @@ using _3._Scripts.Currency.Scriptable;
 using _3._Scripts.Pets.Scriptables;
 using _3._Scripts.Singleton;
 using _3._Scripts.Sounds.Scriptable;
+using _3._Scripts.UI.Enums;
 using _3._Scripts.UI.Scriptable.Shop;
+using _3._Scripts.UI.Structs;
 using GBGamesPlugin;
 using UnityEngine;
 using UnityEngine.Serialization;
+using VInspector;
 
 namespace _3._Scripts.Config
 {
     public class Configuration : Singleton<Configuration>
     {
+        [Tab("Remote")]
         [SerializeField] private RemoteConfig<bool> interByTime;
-        [Space]
+        [Tab("Game Data")] 
+        [SerializeField] private List<RarityTable> rarityTables = new();
         [SerializeField] private List<CurrencyData> currencyData = new();
-        [SerializeField] private List<CharacterItem> allCharacters = new();
+        [SerializeField] private List<AchievementData> achievementData = new();
+        [Tab("Player Data")] [SerializeField] private List<CharacterItem> allCharacters = new();
         [SerializeField] private List<TrailItem> allTrails = new();
         [SerializeField] private List<PetData> allPets = new();
         [SerializeField] private List<UpgradeItem> allUpgrades = new();
         [SerializeField] private List<AuraData> allAuras = new();
-        [SerializeField] private List<AchievementData> achievementData = new();
-        
+
         public bool InterByTime => interByTime.Value;
         public IEnumerable<PetData> AllPets => allPets;
         public IEnumerable<AchievementData> AchievementData => achievementData;
@@ -35,17 +40,17 @@ namespace _3._Scripts.Config
         public IEnumerable<AuraData> AllAuras => allAuras;
         public IEnumerable<CharacterItem> AllCharacters => allCharacters;
         public IEnumerable<TrailItem> AllTrails => allTrails;
-        
-        
+
+
         public CurrencyData GetCurrency(CurrencyType type) => currencyData.FirstOrDefault(c => c.Type == type);
         public PetData GetPet(string id) => AllPets.FirstOrDefault(p => p.ID == id);
+        public RarityTable GetRarityTable(Rarity rarity) => rarityTables.FirstOrDefault(r => r.Rarity == rarity);
 
         private void Start()
         {
             GBGames.InGameLoadingStopped();
             GBGames.GameplayStarted();
             GBGames.GameReady();
-            
         }
     }
 }

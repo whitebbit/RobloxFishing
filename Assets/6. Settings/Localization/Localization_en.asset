@@ -118,7 +118,7 @@ MonoBehaviour:
       m_Items:
       - rid: 3203987063427825692
   - m_Id: 10714823474159616
-    m_Localized: Receive
+    m_Localized: Get
     m_Metadata:
       m_Items: []
   - m_Id: 10765505963106304
@@ -439,6 +439,10 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 45186517873860608
     m_Localized: Locked
+    m_Metadata:
+      m_Items: []
+  - m_Id: 46622408597184512
+    m_Localized: Common
     m_Metadata:
       m_Items: []
   references:

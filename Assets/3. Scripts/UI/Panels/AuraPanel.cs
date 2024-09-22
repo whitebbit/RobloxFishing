@@ -17,6 +17,7 @@ namespace _3._Scripts.UI.Panels
         [SerializeField] private Transform container;
         [SerializeField] private LocalizeStringEvent selectedAuraBooster;
         [SerializeField] private Button selectButton;
+        [SerializeField] private Image selectedImage;
 
         private AuraItem _currentSlot;
         private readonly List<AuraItem> _auraItems = new();
@@ -28,6 +29,7 @@ namespace _3._Scripts.UI.Panels
             SpawnAuraItems();
             selectedAuraBooster.gameObject.SetActive(false);
             selectButton.gameObject.SetActive(false);
+            selectedImage.gameObject.SetActive(false);
         }
 
         protected override void OnOpen()
@@ -61,12 +63,29 @@ namespace _3._Scripts.UI.Panels
             selectedAuraBooster.SetVariable("value", slot.Data.Booster);
             selectedAuraBooster.gameObject.SetActive(true);
             selectButton.gameObject.SetActive(!slot.Locked);
+
+            if (slot.Locked)
+            {
+                selectButton.gameObject.SetActive(false);
+                selectedImage.gameObject.SetActive(false);
+            }
+            else
+            {
+                var selected = GBGames.saves.auraSaves.IsCurrent(slot.Data.ID);
+                selectedImage.gameObject.SetActive(selected);
+                selectButton.gameObject.SetActive(!selected);
+            }
         }
 
         private void SelectAura()
         {
             GBGames.saves.auraSaves.SetCurrent(_currentSlot.Data.ID);
             Player.Player.instance.PlayerAura.Initialize(_currentSlot.Data.ID);
+            
+            var selected = GBGames.saves.auraSaves.IsCurrent(_currentSlot.Data.ID);
+            
+            selectedImage.gameObject.SetActive(selected);
+            selectButton.gameObject.SetActive(!selected);
         }
     }
 }

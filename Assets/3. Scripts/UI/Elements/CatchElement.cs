@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using _3._Scripts.Config;
 using _3._Scripts.MiniGame;
+using _3._Scripts.UI.Extensions;
 using _3._Scripts.UI.Structs;
 using _3._Scripts.Wallet;
 using DG.Tweening;
@@ -18,15 +20,13 @@ namespace _3._Scripts.UI.Elements
         [SerializeField] private Image rareImage;
         [SerializeField] private TMP_Text chanceText;
         [SerializeField] private CanvasGroup canvasGroup;
-        [Tab("Rarity")] 
-        [SerializeField] private List<RarityTable> rarityTables;
-
         public CatchData Data { get; private set; }
         public void Initialize(CatchData data)
         {
             Data = data;
             icon.sprite = data.Icon;
-            rareImage.color = rarityTables.FirstOrDefault(r => r.Rarity == data.Rarity).MainColor;
+            icon.ScaleImage();
+            rareImage.color = Configuration.Instance.GetRarityTable(data.Rarity).MainColor;
             chanceText.text = $"{WalletManager.ConvertToPercentageOrFraction(data.DropChance)}";
         }
 

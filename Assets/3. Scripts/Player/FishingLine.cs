@@ -19,7 +19,6 @@ namespace _3._Scripts.Player
         }
 
         public void SetState(bool state) => fishingLine.gameObject.SetActive(state);
-
         public void SetStartPoint(Transform target) => _startPoint = target;
         public void SetTarget(Transform target) => _target = target;
 

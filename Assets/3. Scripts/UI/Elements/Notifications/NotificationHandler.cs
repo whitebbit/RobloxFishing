@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using _3._Scripts.Aura.Scriptables;
 using _3._Scripts.Config;
 using _3._Scripts.FSM.Base;
 using _3._Scripts.Wallet;
@@ -59,9 +60,10 @@ namespace _3._Scripts.UI.Elements.Notifications
 
             if (current == null) return false;
 
-            var character = 
+            var character =
                 Configuration.Instance.AllCharacters
-                    .FirstOrDefault(c => c.Price <= WalletManager.SecondCurrency && !GBGames.saves.characterSaves.Unlocked(c.ID));
+                    .FirstOrDefault(c =>
+                        c.Price <= WalletManager.SecondCurrency && !GBGames.saves.characterSaves.Unlocked(c.ID));
 
             return character != null;
         }
@@ -84,7 +86,19 @@ namespace _3._Scripts.UI.Elements.Notifications
         private static bool AuraPredicate()
         {
             var auraList = Configuration.Instance.AllAuras;
-            return auraList.Any(a => GBGames.saves.catchSave.CatchIsCaught(a.ID));
+            var auraData = auraList as AuraData[] ?? auraList.ToArray();
+            var current = auraData.FirstOrDefault(a => GBGames.saves.auraSaves.IsCurrent(a.ID));
+
+            if (current == null)
+            {
+                return auraData.Any(a => GBGames.saves.catchSave.CatchIsCaught(a.ID));
+            }
+
+            var aura =
+                Configuration.Instance.AllAuras
+                    .FirstOrDefault(a => GBGames.saves.catchSave.CatchIsCaught(a.ID) && a.Booster > current.Booster);
+
+            return aura != null;
         }
 
         private NotificationItem GetNotificationObject(string id)

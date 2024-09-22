@@ -427,6 +427,10 @@ MonoBehaviour:
     m_Key: locked
     m_Metadata:
       m_Items: []
+  - m_Id: 46622408597184512
+    m_Key: rarity_common
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

@@ -23,7 +23,8 @@ namespace _3._Scripts.UI.Elements
         [SerializeField] private RewardItem rewardItemPrefab;
         [Tab("Button")]
         [SerializeField] private Button getRewardButton;
-        [SerializeField] private  LocalizeStringEvent buttonStateText;
+        [SerializeField] private TMP_Text getText;
+        [SerializeField] private Image gotImage;
         
         private RangData _data;
 
@@ -43,9 +44,11 @@ namespace _3._Scripts.UI.Elements
             
             slider.value = percent;
             progressText.text = $"{WalletManager.ConvertToWallet((decimal) (percent * 100))}%";
-            buttonStateText.SetReference(GBGames.saves.rangSaves.GetState(_data.RangNameID) ? "received" : "receive");
+            gotImage.gameObject.SetActive(GBGames.saves.rangSaves.GetState(_data.RangNameID));
+            getText.gameObject.SetActive(!GBGames.saves.rangSaves.GetState(_data.RangNameID));
             getRewardButton.gameObject.SetActive(state);
             getRewardButton.onClick.AddListener(GetReward);
+            
         }
         
         private void InitializedRewards()
@@ -66,7 +69,8 @@ namespace _3._Scripts.UI.Elements
                 reward.OnReward();
             }
             GBGames.saves.rangSaves.SetState(_data.RangNameID, true);
-            buttonStateText.SetReference(GBGames.saves.rangSaves.GetState(_data.RangNameID) ? "received" : "receive");
+            gotImage.gameObject.SetActive(GBGames.saves.rangSaves.GetState(_data.RangNameID));
+            getText.gameObject.SetActive(!GBGames.saves.rangSaves.GetState(_data.RangNameID));
         }
     }
 }

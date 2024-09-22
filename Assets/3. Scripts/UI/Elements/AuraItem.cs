@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using _3._Scripts.Aura.Scriptables;
+using _3._Scripts.Config;
 using _3._Scripts.Localization;
 using _3._Scripts.UI.Enums;
 using _3._Scripts.UI.Structs;
@@ -26,14 +27,12 @@ namespace _3._Scripts.UI.Elements
         [Space] [SerializeField] private Button button;
         
         [Space] [SerializeField] private Transform lockerObject;
-
-        [Tab("Rarity")] [SerializeField] private List<RarityTable> rarity = new();
         public AuraData Data { get; private set; }
         
         public bool Locked => !GBGames.saves.catchSave.CatchIsCaught(Data.ID);
         public void Initialize(AuraData data)
         {
-            var currentRarity = rarity.FirstOrDefault(r => r.Rarity == data.Rarity);
+            var currentRarity = Configuration.Instance.GetRarityTable(data.Rarity);
 
             Data = data;
             auraIcon.sprite = data.Icon;

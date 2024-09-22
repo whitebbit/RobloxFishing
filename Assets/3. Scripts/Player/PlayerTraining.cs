@@ -17,8 +17,7 @@ namespace _3._Scripts.Player
         [SerializeField] private CurrencyCounterEffect effect;
 
         [SerializeField] private TrainingPond pond;
-
-        private FishingRod FishingRod => Player.instance.UpgradeHandler.FishingRod;
+        private static FishingRod FishingRod => Player.instance.UpgradeHandler.FishingRod;
         private bool _trainingStarted;
         private float _timerToDeactivate = 2;
 
@@ -86,7 +85,7 @@ namespace _3._Scripts.Player
 
             FishingLine.Instance.SetState(true);
             FishingLine.Instance.SetStartPoint(FishingRod.FishingLineStartPoint.transform);
-            FishingLine.Instance.SetTarget(pond.transform);
+            FishingLine.Instance.SetTarget(pond.FishingFloatPoint);
             pond.SetState(true);
         }
 

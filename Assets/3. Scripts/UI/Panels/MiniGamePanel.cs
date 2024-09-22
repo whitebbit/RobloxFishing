@@ -68,13 +68,26 @@ namespace _3._Scripts.UI.Panels
 
         private void Update()
         {
+            Player.Player.instance.UpgradeHandler.FishingRod.SetState(true);
+
             if (!_started) return;
+
             if (InterstitialsTimer.Instance.Active) return;
 
             HandleInput();
             UpdateFillAmount();
             slider.value = _fillAmount;
             CheckGameEnd();
+        }
+
+        protected override void OnClose()
+        {
+            base.OnClose();
+            var player = Player.Player.instance;
+            if (player == null) return;
+            var upgradeHandler = player.UpgradeHandler;
+
+            upgradeHandler?.FishingRod.SetState(false);
         }
 
         public void StartFishing(Fighter player, Fighter enemy, List<CatchData> catchData,
@@ -92,6 +105,7 @@ namespace _3._Scripts.UI.Panels
 
             InputHandler.Instance.SetState(false);
             FishingLine.Instance.SetState(false);
+            Player.Player.instance.UpgradeHandler.FishingRod.SetState(true);
 
             OnEnd = onEnd;
             OnStartFishing = onStart;
@@ -123,7 +137,11 @@ namespace _3._Scripts.UI.Panels
 
             slider.value = 0;
             _currentTween = slider.DOValue(1, 3f).OnComplete(StartPutStep).SetDelay(2f)
-                .OnStart(() => OnStartFishing?.Invoke());
+                .OnStart(() =>
+                {
+                    Player.Player.instance.UpgradeHandler.FishingRod.SetState(true);
+                    OnStartFishing?.Invoke();
+                });
         }
 
         private void StartPutStep()

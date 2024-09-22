@@ -57,7 +57,7 @@ namespace _3._Scripts.Pets
             foreach (var petData in _data)
             {
                 var petSlot = Instantiate(slotPrefab, content);
-                petSlot.Initialize(petData.Icon, petData.DropPercent);
+                petSlot.Initialize(petData.Icon, petData.Rarity, petData.DropPercent);
             }
         }
 
@@ -111,7 +111,7 @@ namespace _3._Scripts.Pets
             SelectBest();
         }
 
-        private void SelectBest()
+        public static void SelectBest()
         {
             var best = GBGames.saves.petsSave.unlocked.OrderByDescending(p => p.booster).ToList();
             if (best.Count <= 0) return;

@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using _3._Scripts.Config;
 using _3._Scripts.UI.Scriptable.Shop;
 using TMPro;
 using UnityEngine;
@@ -18,13 +19,13 @@ namespace _3._Scripts.UI.Elements.ShopSlots
 
         public override void SetView(ShopItem item)
         {
-            var rarity = rarityTables.FirstOrDefault(r => r.Rarity == item.Rarity);
+            var rarity = Configuration.Instance.GetRarityTable(item.Rarity);
             if (item is CharacterItem characterData)
             {
                 var characterImage = RuntimeSkinIconRenderer.Instance.GetTexture2D(item.ID, characterData.Skin);
                 icon.texture = characterImage;
             }
-            table.sprite = rarity.Table;
+            table.color = rarity.MainColor;
             glow.color = rarity.MainColor;
             backGlow.color = rarity.AdditionalColor;
             title.text = item.Title();

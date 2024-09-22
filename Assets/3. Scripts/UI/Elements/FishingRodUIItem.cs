@@ -17,6 +17,9 @@ namespace _3._Scripts.UI.Elements
         [SerializeField] private RawImage icon;
         [SerializeField] private TMP_Text boosterText;
         [SerializeField] private Button selectButton;
+        [SerializeField] private Image selectedImage;
+        [SerializeField] private Image lockImage;
+
         [SerializeField] private LocalizeStringEvent buttonText;
 
         private UpgradeItem _data;
@@ -34,27 +37,38 @@ namespace _3._Scripts.UI.Elements
         public void UpdateButtonState()
         {
             var state = WalletManager.FirstCurrency >= _data.Price;
-            selectButton.interactable = state;
             if (state)
             {
                 var selectedState = GBGames.saves.upgradeSaves.IsCurrent(_data.ID);
-                buttonText.SetReference(selectedState ? "selected" : "select");
+                if (selectedState)
+                {
+                    selectedImage.gameObject.SetActive(true);
+                    selectButton.gameObject.SetActive(false);
+                    lockImage.gameObject.SetActive(false);
+                }
+                else
+                {
+                    selectedImage.gameObject.SetActive(false);
+                    selectButton.gameObject.SetActive(true);
+                    lockImage.gameObject.SetActive(false);
+                }
             }
             else
             {
-                buttonText.SetReference("locked");
+                selectedImage.gameObject.SetActive(false);
+                selectButton.gameObject.SetActive(false);
+                lockImage.gameObject.SetActive(true);
             }
         }
 
         public event Action ONSelect;
+
         private void OnClick()
         {
-            
             GBGames.saves.upgradeSaves.SetCurrent(_data.ID);
             Player.Player.instance.UpgradeHandler.SetUpgrade(_data.ID);
             UpdateButtonState();
             ONSelect?.Invoke();
-
         }
     }
 }

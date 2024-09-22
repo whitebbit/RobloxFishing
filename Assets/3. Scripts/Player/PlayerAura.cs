@@ -22,7 +22,7 @@ namespace _3._Scripts.Player
             Data = Configuration.Instance.AllAuras.FirstOrDefault(u => u.ID == id);
 
             if (_currentAura != null)
-                Object.Destroy(_currentAura);
+                Object.Destroy(_currentAura.gameObject);
 
             if (Data == null) return;
             if (Data.Prefab == null) return;
