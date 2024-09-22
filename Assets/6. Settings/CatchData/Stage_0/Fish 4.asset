@@ -15,6 +15,6 @@ MonoBehaviour:
   id: fish_2
   icon: {fileID: 21300000, guid: e3a773f2bea6b644b86dd8f69fbde0e5, type: 3}
   dropChance: 1
-  reward: 10
+  reward: 100
   rarity: 3
   type: 0
