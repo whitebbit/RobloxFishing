@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 967c4795ac8f4e24889490914378e264, type: 3}
+  m_Name: RangData 2
+  m_EditorClassIdentifier: 
+  rangNameID: rang_2
+  countToUnlock: 25
+  rewards:
+  - {fileID: 11400000, guid: 7ea36e6b41712c743b4b749d73a28e7e, type: 2}
+  - {fileID: 11400000, guid: 2234259b10a451c4881018ff79c980f4, type: 2}
+  - {fileID: 11400000, guid: b2eb8ea39e503404ea2e7c09145811ab, type: 2}

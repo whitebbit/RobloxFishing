@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: RangData
   m_EditorClassIdentifier: 
   rangNameID: rang_0
-  countToUnlock: 1
+  countToUnlock: 5
   rewards:
   - {fileID: 11400000, guid: 7ea36e6b41712c743b4b749d73a28e7e, type: 2}
   - {fileID: 11400000, guid: 2234259b10a451c4881018ff79c980f4, type: 2}

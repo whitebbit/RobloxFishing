@@ -431,6 +431,18 @@ MonoBehaviour:
     m_Key: rarity_common
     m_Metadata:
       m_Items: []
+  - m_Id: 47290069475794944
+    m_Key: rang_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 47290103646789632
+    m_Key: rang_2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 47290112006037504
+    m_Key: rang_3
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

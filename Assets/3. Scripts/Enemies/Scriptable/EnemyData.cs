@@ -10,7 +10,6 @@ namespace _3._Scripts.Enemies.Scriptable
     [CreateAssetMenu(fileName = "Enemy Data", menuName = "ScriptableObjects/EnemyData", order = 0)]
     public class EnemyData : ScriptableObject
     {       
-        [SerializeField] private string id;
         [Tab("UI")] 
         [SerializeField] private string localizationID;
         [Tab("Settings")]
@@ -22,9 +21,7 @@ namespace _3._Scripts.Enemies.Scriptable
         [SerializeField] private ComplexityType complexityType;
         [Tab("View")]
         [SerializeField] private Material skin;
-
-        public string ID => id;
-
+        
         public float AdditionalDropChance => additionalDropChance;
         public Material Skin => skin;    
         public string LocalizationID => localizationID;

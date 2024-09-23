@@ -445,6 +445,18 @@ MonoBehaviour:
     m_Localized: Common
     m_Metadata:
       m_Items: []
+  - m_Id: 47290069475794944
+    m_Localized: The average fisherman
+    m_Metadata:
+      m_Items: []
+  - m_Id: 47290103646789632
+    m_Localized: An advanced fisherman
+    m_Metadata:
+      m_Items: []
+  - m_Id: 47290112006037504
+    m_Localized: The Master Fisherman
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:
