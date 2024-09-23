@@ -113,7 +113,7 @@ Material:
     - _FoamNoiseAmount: 1
     - _FoamScale: 4
     - _FoamSharpness: 0.531
-    - _FoamSpeed: 0.1
+    - _FoamSpeed: 1
     - _FoamStretchX: 0.12
     - _FoamStretchY: 0.17
     - _FoamWidth: 0.4

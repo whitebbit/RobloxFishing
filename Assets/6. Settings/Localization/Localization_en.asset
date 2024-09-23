@@ -177,55 +177,55 @@ MonoBehaviour:
       m_Items:
       - rid: 3203987063427825692
   - m_Id: 12874268221902848
-    m_Localized: Slapster
+    m_Localized: Noob
     m_Metadata:
       m_Items: []
   - m_Id: 12874542248366080
-    m_Localized: Fistmaster
+    m_Localized: Buff Guy
     m_Metadata:
       m_Items: []
   - m_Id: 12874574657753088
-    m_Localized: Punch King
+    m_Localized: Armored
     m_Metadata:
       m_Items: []
   - m_Id: 12874590671605760
-    m_Localized: Slapzilla
+    m_Localized: Boss
     m_Metadata:
       m_Items: []
   - m_Id: 12874602436628480
-    m_Localized: Palms of Fury
+    m_Localized: Cowboy
     m_Metadata:
       m_Items: []
   - m_Id: 12874619339673600
-    m_Localized: Backhander
+    m_Localized: Mister Cowboy
     m_Metadata:
       m_Items: []
   - m_Id: 12874630819483648
-    m_Localized: Clapper
+    m_Localized: Angry Cowboy
     m_Metadata:
       m_Items: []
   - m_Id: 12874653665857536
-    m_Localized: Knuckle Buster
+    m_Localized: Noob Cowboy
     m_Metadata:
       m_Items: []
   - m_Id: 12874664478773248
-    m_Localized: Smackdown
+    m_Localized: Wizard
     m_Metadata:
       m_Items: []
   - m_Id: 12874683910983680
-    m_Localized: Thunder Palm
+    m_Localized: Mushroom Wizard
     m_Metadata:
       m_Items: []
   - m_Id: 15072656145256448
-    m_Localized: Palm Crusher
+    m_Localized: Emperor
     m_Metadata:
       m_Items: []
   - m_Id: 15072659270012928
-    m_Localized: Strike Force
+    m_Localized: Demon
     m_Metadata:
       m_Items: []
   - m_Id: 15072793751982080
-    m_Localized: Bash Bringer
+    m_Localized: Lucifer
     m_Metadata:
       m_Items: []
   - m_Id: 15072798210527232
@@ -245,15 +245,15 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 15072592320532480
-    m_Localized: Face Slapper
+    m_Localized: Forest master
     m_Metadata:
       m_Items: []
   - m_Id: 15072594728062976
-    m_Localized: Hand of Doom
+    m_Localized: Magic Boss
     m_Metadata:
       m_Items: []
   - m_Id: 15072596133154816
-    m_Localized: Slap Dragon
+    m_Localized: Underground Noob
     m_Metadata:
       m_Items: []
   - m_Id: 15072968012730368
