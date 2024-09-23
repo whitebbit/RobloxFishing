@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85eb276d2e7b42e3a1ab6f9d072837a2, type: 3}
   m_Name: Fish 0
   m_EditorClassIdentifier: 
-  id: fish_0
+  id: fish_6
   icon: {fileID: 21300000, guid: 2b351e5f2545d4d4681a95a3bb5f3377, type: 3}
   dropChance: 70
   reward: 200

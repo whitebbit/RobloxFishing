@@ -21,4 +21,4 @@ MonoBehaviour:
   color: {r: 1, g: 1, b: 1, a: 1}
   prefab: {fileID: 6209848070183442885, guid: 0b2b0ef19eb6d0c4a946395fdb5dde72, type: 3}
   mainMaterial: {fileID: 2100000, guid: 5dcab103a5398f54fb72b90ba1227629, type: 2}
-  secondMaterial: {fileID: 2100000, guid: f9a0d6a989b867e4ebe61c5966304551, type: 2}
+  secondMaterial: {fileID: 2100000, guid: 7f6d38e449741844f901d248b16fe427, type: 2}
