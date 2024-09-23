@@ -21,13 +21,13 @@ namespace _3._Scripts.UI.Elements
         [SerializeField] private TMP_Text chanceText;
         [SerializeField] private CanvasGroup canvasGroup;
         public CatchData Data { get; private set; }
-        public void Initialize(CatchData data)
+        public void Initialize(CatchData data, float additionalDropChance =0)
         {
             Data = data;
             icon.sprite = data.Icon;
             icon.ScaleImage();
             rareImage.color = Configuration.Instance.GetRarityTable(data.Rarity).MainColor;
-            chanceText.text = $"{WalletManager.ConvertToPercentageOrFraction(data.DropChance)}";
+            chanceText.text = $"{WalletManager.ConvertToPercentageOrFraction(data.DropChance + additionalDropChance)}";
         }
 
         public void SetUnlockedState(bool state)

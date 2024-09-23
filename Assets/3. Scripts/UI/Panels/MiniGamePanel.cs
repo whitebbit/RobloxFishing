@@ -98,7 +98,7 @@ namespace _3._Scripts.UI.Panels
             _fillAmount = 0.5f;
             _currentEnemy = data;
             rewardCatch.SetState(false);
-            catchList.Initialize(StageController.Instance.CurrentStageID, _currentEnemy.CatchData);
+            catchList.Initialize(StageController.Instance.CurrentStageID, _currentEnemy.CatchData, _currentEnemy.AdditionalDropChance);
 
             SetComponentsState(false);
 
@@ -185,7 +185,7 @@ namespace _3._Scripts.UI.Panels
 
             effectInstance.Initialize(rewardType, rewardC);
 
-            rewardCatch.Initialize(catchReward);
+            rewardCatch.Initialize(catchReward, 0);
             rewardCatch.SetState(true);
             _player.EndFishing();
             _started = false;

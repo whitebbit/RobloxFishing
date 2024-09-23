@@ -18,7 +18,7 @@ namespace _3._Scripts.UI.Elements
         private readonly List<CatchElement> _catchElements = new();
         private List<CatchData> _catchData = new();
         private int _stageID;
-        
+
         private void OnEnable()
         {
             UpdateCatchList();
@@ -40,17 +40,17 @@ namespace _3._Scripts.UI.Elements
             }
         }
 
-        public void Initialize(int stageID, List<CatchData> catchData)
+        public void Initialize(int stageID, List<CatchData> catchData, float additionalDropChance)
         {
             _catchData = catchData;
             _stageID = stageID;
-            
+
             ClearList();
-            SpawnList();
+            SpawnList(additionalDropChance);
             UpdateCatchList();
         }
 
-        private void SpawnList()
+        private void SpawnList(float additionalDropChance)
         {
             var fish = _catchData.Where(d => d.Type == CatchType.Fish);
             var treasure = _catchData.Where(d => d.Type == CatchType.Treasure);
@@ -58,7 +58,7 @@ namespace _3._Scripts.UI.Elements
             foreach (var data in fish)
             {
                 var element = Instantiate(catchElementPrefab, fishContainer);
-                element.Initialize(data);
+                element.Initialize(data, additionalDropChance);
                 _catchElements.Add(element);
             }
 

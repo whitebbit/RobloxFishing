@@ -53,7 +53,7 @@ namespace _3._Scripts.Interactive
             _enemy = enemy;
 
             Debug.Log(data.ComplexityType);
-            catchList.Initialize(StageController.Instance.CurrentStageID, data.CatchData);
+            catchList.Initialize(StageController.Instance.CurrentStageID, data.CatchData, data.AdditionalDropChance);
         }
 
         private void Start()

@@ -51,7 +51,7 @@ namespace _3._Scripts.UI.Panels
             foreach (var (key, value) in StageController.Instance.GetAllData())
             {
                 var catchList = Instantiate(catchListPrefab, catchListContainer);
-                catchList.Initialize(key, value);
+                catchList.Initialize(key, value, 0);
                 _catchLists.Add(catchList);
             }
         }
