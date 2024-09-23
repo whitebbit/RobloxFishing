@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5cbecec44984b2ea15a0c8994bbbfd8, type: 3}
   m_Name: Enemy Data 3
   m_EditorClassIdentifier: 
-  id: 
   localizationID: Enemy_04
   strength: 50000
   additionalDropChance: 0
@@ -21,4 +20,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0696622c387fdad4b9d33efc47442a1b, type: 2}
   - {fileID: 11400000, guid: c67f24281ecf1584ebc574250d6e0d36, type: 2}
   complexityType: 3
-  skin: {fileID: 0}
+  skin: {fileID: 2100000, guid: 8b35ebb84c79b8d4a9027a26f9337d69, type: 2}
