@@ -123,6 +123,8 @@ namespace _3._Scripts.UI.Panels
             OnEnd?.Invoke();
 
             SetComponentsState(true);
+
+            BoostersHandler.Instance.AutoFightBooster.Deactivate();
         }
 
         private void StartWaitStep()
@@ -195,6 +197,7 @@ namespace _3._Scripts.UI.Panels
         }
 
         private float _timeToClick = 0.5f;
+
         private void HandleInput()
         {
             if (Input.GetMouseButtonDown(0))
@@ -202,10 +205,14 @@ namespace _3._Scripts.UI.Panels
                 _fillAmount += GetPlayerFillRate();
             }
 
-            if (BoostersHandler.Instance.GetBoosterState("auto_fight"))
-            {
-                
-            }
+            if (!BoostersHandler.Instance.GetBoosterState("auto_fight")) return;
+            
+            _timeToClick -= Time.deltaTime;
+            
+            if (!(_timeToClick <= 0)) return;
+            
+            _timeToClick = 0.5f;
+            _fillAmount += GetPlayerFillRate();
         }
 
         private void UpdateFillAmount()

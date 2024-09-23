@@ -15,6 +15,6 @@ MonoBehaviour:
   rangNameID: rang_3
   countToUnlock: 36
   rewards:
-  - {fileID: 11400000, guid: 7ea36e6b41712c743b4b749d73a28e7e, type: 2}
-  - {fileID: 11400000, guid: 2234259b10a451c4881018ff79c980f4, type: 2}
-  - {fileID: 11400000, guid: b2eb8ea39e503404ea2e7c09145811ab, type: 2}
+  - {fileID: 11400000, guid: 03d93515fddc53d40a598d42ae8ad21a, type: 2}
+  - {fileID: 11400000, guid: f106f035fbfdd92449de599e1ec0b9df, type: 2}
+  - {fileID: 11400000, guid: 75fb877a88959ad4ea36a53f46fc8256, type: 2}

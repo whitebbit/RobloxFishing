@@ -19,7 +19,7 @@ namespace _3._Scripts.Boosters
         [SerializeField] private Transform slapBoosterView;
         [Tab("Debug")] [SerializeField] private List<BoosterState> boosters = new();
 
-
+        public AutoFightBooster AutoFightBooster => autoFightBooster;
         private void ChangeBoosterState(string boosterName, bool state)
         {
             var booster = boosters.FirstOrDefault(b => b.name == boosterName);

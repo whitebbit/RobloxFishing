@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65432d449a2647b5b5f6c56194c15f5d, type: 3}
   m_Name: PetGiftItem 2
   m_EditorClassIdentifier: 
-  data: {fileID: 11400000, guid: dcebdfedb6daedb4496c75aaceaaa340, type: 2}
+  data: {fileID: 11400000, guid: 52860ba57a36ecc4da4226f282042ea5, type: 2}

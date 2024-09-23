@@ -16,12 +16,10 @@ namespace _3._Scripts.Stages
     {
         [Header("Main")] [SerializeField] private StageConfig config;
         [SerializeField] private Transform spawnPoint;
-        [SerializeField] private List<Bot> bots = new();
 
         public List<Interactive.MiniGame> MiniGames { get; set; }
-        public List<EnemyData> EnemyData => config.Enemies;
+        public IEnumerable<EnemyData> EnemyData => config.Enemies;
         
-        private readonly List<Bot> _currentBots = new();
         public Transform SpawnPoint => spawnPoint;
         public float GiftBooster => config.GiftBooster;
         public int ID => config.ID;
@@ -30,7 +28,6 @@ namespace _3._Scripts.Stages
         {
             InitializeEnemy();
             InitializePetUnlocker();
-            //InitializeBots(trainings);
             InitializeTeleport();
         }
 
@@ -64,27 +61,6 @@ namespace _3._Scripts.Stages
         {
             gameObject.name = $"Stage_{ID}";
         }
-
-        private void InitializeBots(Training[] trainings)
-        {
-            foreach (var obj in bots.Select(bot => Instantiate(bot, transform)))
-            {
-                obj.transform.position += Vector3.left * UnityEngine.Random.Range(-7.5f, 7.5f) +
-                                          Vector3.forward * UnityEngine.Random.Range(-7.5f, 7.5f);
-
-                obj.Initialize(trainings);
-                _currentBots.Add(obj);
-            }
-        }
-
-        private void OnDisable()
-        {
-            foreach (var bot in _currentBots)
-            {
-                Destroy(bot.gameObject);
-            }
-
-            _currentBots.Clear();
-        }
+        
     }
 }

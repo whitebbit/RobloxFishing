@@ -35,7 +35,7 @@ namespace _3._Scripts.Boosters
             else Activate();
         }
 
-        private void Deactivate()
+        public void Deactivate()
         {
             _state = false;
             onDeactivateBooster?.Invoke();
