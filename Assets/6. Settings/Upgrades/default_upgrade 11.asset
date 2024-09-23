@@ -20,5 +20,5 @@ MonoBehaviour:
   booster: 39000
   color: {r: 1, g: 1, b: 1, a: 1}
   prefab: {fileID: 6209848070183442885, guid: 0b2b0ef19eb6d0c4a946395fdb5dde72, type: 3}
-  mainMaterial: {fileID: 2100000, guid: 6e1daea5953a16f4dadc677cc2a29182, type: 2}
-  secondMaterial: {fileID: 2100000, guid: b12478150be18fe4ea7a58afcdf2072b, type: 2}
+  mainMaterial: {fileID: 2100000, guid: 2523998aace5a224e9c0ca96308e2714, type: 2}
+  secondMaterial: {fileID: 2100000, guid: f9a0d6a989b867e4ebe61c5966304551, type: 2}
