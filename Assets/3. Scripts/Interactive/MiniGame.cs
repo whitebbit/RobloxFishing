@@ -34,7 +34,7 @@ namespace _3._Scripts.Interactive
         [SerializeField] private Transform enemyPoint;
         [SerializeField] private Transform useTutorialObject;
 
-        private EnemyData _enemyData;
+        public EnemyData EnemyData { get; private set; }
         private Fighter _enemy;
         private bool _fightStarted;
 
@@ -45,10 +45,10 @@ namespace _3._Scripts.Interactive
 
             var enemy = Instantiate(enemyPrefab, transform);
 
-            _enemyData = data;
+            EnemyData = data;
 
             enemy.transform.localPosition = enemyPoint.localPosition;
-            enemy.Initialize(_enemyData);
+            enemy.Initialize(EnemyData);
 
             _enemy = enemy;
 
@@ -77,7 +77,7 @@ namespace _3._Scripts.Interactive
             var player = Player.Player.instance;
 
             panel.Enabled = true;
-            panel.StartFishing(Player.Player.instance, _enemy, _enemyData, StartFishing,
+            panel.StartFishing(Player.Player.instance, _enemy, EnemyData, StartFishing,
                 EndFishing);
 
             useTutorialObject.gameObject.SetActive(false);

@@ -36,8 +36,8 @@ namespace _3._Scripts.Player
         private void TryEndTraining()
         {
             if (UIManager.Instance.Active && _trainingStarted)
-            {
-                EndTraining();
+            { 
+                //EndTraining();
                 return;
             }
 

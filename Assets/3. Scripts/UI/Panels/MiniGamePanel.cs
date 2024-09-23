@@ -69,9 +69,6 @@ namespace _3._Scripts.UI.Panels
 
         private void Update()
         {
-            Player.Player.instance.UpgradeHandler.FishingRod.SetState(true);
-            FishingLine.Instance.SetState(true);
-
             if (!_started) return;
 
             if (InterstitialsTimer.Instance.Active) return;
@@ -197,11 +194,17 @@ namespace _3._Scripts.UI.Panels
             StartCoroutine(RestartGame());
         }
 
+        private float _timeToClick = 0.5f;
         private void HandleInput()
         {
             if (Input.GetMouseButtonDown(0))
             {
                 _fillAmount += GetPlayerFillRate();
+            }
+
+            if (BoostersHandler.Instance.GetBoosterState("auto_fight"))
+            {
+                
             }
         }
 

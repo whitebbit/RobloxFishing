@@ -19,7 +19,6 @@ namespace _3._Scripts.Boosters
         [SerializeField] private Transform slapBoosterView;
         [Tab("Debug")] [SerializeField] private List<BoosterState> boosters = new();
 
-        public Interactive.MiniGame CurrentMiniGame { get; set; }
 
         private void ChangeBoosterState(string boosterName, bool state)
         {
@@ -60,7 +59,6 @@ namespace _3._Scripts.Boosters
             autoFightBooster.onActivateBooster += () =>
             {
                 ChangeBoosterState("auto_fight", true);
-                StartCoroutine(MiniGameCoroutine());
             };
             autoFightBooster.onDeactivateBooster += () =>
             {
@@ -68,21 +66,6 @@ namespace _3._Scripts.Boosters
                 StopAllCoroutines();
             };
             
-        }
-
-
-        private IEnumerator MiniGameCoroutine()
-        {
-            while (GetBoosterState("auto_fight"))
-            {
-                yield return new WaitUntil(() => !UIManager.Instance.GetPanel<MiniGamePanel>().Enabled);
-                yield return new WaitForSeconds(3);
-
-                if (CurrentMiniGame == null) continue;
-                if (!GetBoosterState("auto_fight")) break;
-                
-                CurrentMiniGame.Interact();
-            }
         }
     }
 }

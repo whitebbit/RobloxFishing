@@ -40,7 +40,13 @@ namespace _3._Scripts.UI.Panels
 
         private void InitializeButtons()
         {
-            
+            var enemies = StageController.Instance.CurrentStage.EnemyData.OrderBy(e => e.ComplexityType).ToList();
+            for (var i = 0; i < StageController.Instance.CurrentStage.MiniGames.Count; i++)
+            {
+                var button = Instantiate(enemySelectButtonPrefab, container);
+                button.Initialize(enemies[i]);
+                _enemySelectButtons.Add(button);
+            }
         }
 
         private void ClearButtons()

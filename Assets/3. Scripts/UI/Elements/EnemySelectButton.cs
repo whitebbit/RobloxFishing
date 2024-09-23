@@ -15,7 +15,7 @@ namespace _3._Scripts.UI.Elements
 {
     public class EnemySelectButton : MonoBehaviour
     {
-        [SerializeField] private Image icon;
+        [SerializeField] private RawImage icon;
         [SerializeField] private TMP_Text strengthText;
         [SerializeField] private LocalizeStringEvent complexityText;
 
@@ -27,16 +27,23 @@ namespace _3._Scripts.UI.Elements
         public void Initialize(EnemyData data)
         {
             _data = data;
-           // icon.sprite = data.Icon;
-           // strengthText.text = $"{WalletManager.ConvertToWallet((decimal) (data.Health / 25))} <sprite index=1>";
-            //complexityText.TextToComplexity(data.ComplexityType);
+            icon.texture = RuntimeSkinIconRenderer.Instance.GetTexture2D(data.LocalizationID, data.Skin);
+            strengthText.text = $"{WalletManager.ConvertToWallet((decimal) (data.Strength * 1.5f))} <sprite index=1>";
+            complexityText.TextToComplexity(data.ComplexityType);
             button.onClick.RemoveAllListeners();
             button.onClick.AddListener(OnClick);
         }
 
         private void OnClick()
         {
+            var miniGame =
+                StageController.Instance.CurrentStage.MiniGames.FirstOrDefault(m =>
+                    m.EnemyData.ComplexityType == _data.ComplexityType);
+
+            if (miniGame == null) return;
             
+            UIManager.Instance.GetPanel<AutoFightPanel>().Enabled = false;
+            miniGame.Interact();
         }
     }
 }
