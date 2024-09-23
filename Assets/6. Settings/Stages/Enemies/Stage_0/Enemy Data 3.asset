@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 
   localizationID: Enemy_04
-  strength: 10
+  strength: 50000
+  additionalDropChance: 0
   catchData:
   - {fileID: 11400000, guid: be5239136af8ba545a88dcb160cddd23, type: 2}
   - {fileID: 11400000, guid: 0696622c387fdad4b9d33efc47442a1b, type: 2}

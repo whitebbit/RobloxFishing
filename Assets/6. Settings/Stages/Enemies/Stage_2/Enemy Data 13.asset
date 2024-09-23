@@ -12,10 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5cbecec44984b2ea15a0c8994bbbfd8, type: 3}
   m_Name: Enemy Data 13
   m_EditorClassIdentifier: 
+  id: 
   localizationID: Enemy_14
-  icon: {fileID: 21300000, guid: b28ff7e906e1f6c47bbd547200aeab56, type: 3}
-  health: 8e+12
-  strength: 25
-  rewardCount: 70000
+  strength: 434000000
+  additionalDropChance: 0
+  catchData:
+  - {fileID: 11400000, guid: af06bc94b01f54d4aaf9087bf93df5e0, type: 2}
+  - {fileID: 11400000, guid: 82922c65fa6bfd849b13e3a144cf0f28, type: 2}
+  - {fileID: 11400000, guid: f020993d35e2e4f4991e406400c1d896, type: 2}
   complexityType: 3
-  model: {fileID: -8679921383154817045, guid: f9746ce87daac26449b186a622fd701a, type: 3}
+  skin: {fileID: 0}

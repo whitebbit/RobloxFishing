@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: treasure_4
   icon: {fileID: 21300000, guid: 87e634b53f2044446a26a1094d0d1067, type: 3}
-  dropChance: 25
+  dropChance: 0.001
   reward: 10
   rarity: 3
   type: 1

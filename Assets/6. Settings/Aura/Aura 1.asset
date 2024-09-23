@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   treasure: {fileID: 11400000, guid: 2561e0f1760ed7a4f9f06bd9e48e632c, type: 2}
   prefab: {fileID: 1754073780083616534, guid: 0586160ddbcce034fb74bc855e6ad51b, type: 3}
-  booster: 15
+  booster: 10

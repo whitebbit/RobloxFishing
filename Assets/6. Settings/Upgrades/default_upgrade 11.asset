@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df4ffaf036fd46eb984e2fc8f15c2f42, type: 3}
+  m_Name: default_upgrade 11
+  m_EditorClassIdentifier: 
+  id: default_upgrade
+  icon: {fileID: 21300000, guid: eb2cbd0984b4ed44ca3eb703d056ad04, type: 3}
+  rarity: 1
+  currencyType: 1
+  price: 62000000
+  booster: 39000
+  color: {r: 1, g: 1, b: 1, a: 1}
+  prefab: {fileID: 6209848070183442885, guid: 0b2b0ef19eb6d0c4a946395fdb5dde72, type: 3}
+  mainMaterial: {fileID: 2100000, guid: 6e1daea5953a16f4dadc677cc2a29182, type: 2}
+  secondMaterial: {fileID: 2100000, guid: b12478150be18fe4ea7a58afcdf2072b, type: 2}

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Fish 2
   m_EditorClassIdentifier: 
   id: fish_2
-  icon: {fileID: 21300000, guid: 11c33ea2a7ef8df40a7d14248f619b4a, type: 3}
+  icon: {fileID: 21300000, guid: e05f41e77a6cec74eac6cfac1f75563a, type: 3}
   dropChance: 5
   reward: 2000
   rarity: 1
