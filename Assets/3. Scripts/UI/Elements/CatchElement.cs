@@ -25,7 +25,7 @@ namespace _3._Scripts.UI.Elements
         {
             Data = data;
             icon.sprite = data.Icon;
-            icon.ScaleImage();
+            //icon.ScaleImage();
             rareImage.color = Configuration.Instance.GetRarityTable(data.Rarity).MainColor;
             chanceText.text = $"{WalletManager.ConvertToPercentageOrFraction(data.DropChance + additionalDropChance)}";
         }
@@ -40,7 +40,8 @@ namespace _3._Scripts.UI.Elements
             if (state)
             {
                 gameObject.SetActive(true);
-                canvasGroup.DOFade(1, 0.25f);
+                canvasGroup.DOFade(1, 0.5f);
+                transform.DOScale(0, 0.5f).From().SetEase(Ease.OutBack);
             }
             else
             {

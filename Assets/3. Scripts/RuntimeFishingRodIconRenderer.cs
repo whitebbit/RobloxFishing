@@ -16,7 +16,7 @@ namespace _3._Scripts
 
         public Texture2D GetTexture2D(UpgradeItem data)
         {
-            return _textureCache.ContainsKey(data.ID) ? _textureCache[data.ID] : CreateTexture2D(data);
+            return /*_textureCache.ContainsKey(data.ID) ? _textureCache[data.ID] :*/ CreateTexture2D(data);
         }
         
         private Texture2D CreateTexture2D(UpgradeItem data)
@@ -52,7 +52,7 @@ namespace _3._Scripts
             renderedTexture.SetPixels32(pixels);
             renderedTexture.Apply();
             
-            _textureCache.Add(data.ID, renderedTexture);
+            _textureCache.TryAdd(data.ID, renderedTexture);
             
             return renderedTexture;
         }

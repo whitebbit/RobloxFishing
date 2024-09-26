@@ -457,6 +457,10 @@ MonoBehaviour:
     m_Localized: The Master Fisherman
     m_Metadata:
       m_Items: []
+  - m_Id: 48416257434853376
+    m_Localized: Fishing Rod Store
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:

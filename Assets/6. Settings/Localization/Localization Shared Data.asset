@@ -443,6 +443,10 @@ MonoBehaviour:
     m_Key: rang_3
     m_Metadata:
       m_Items: []
+  - m_Id: 48416257434853376
+    m_Key: fishingrod_shop
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

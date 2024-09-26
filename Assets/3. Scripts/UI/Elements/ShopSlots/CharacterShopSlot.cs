@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using _3._Scripts.Config;
 using _3._Scripts.UI.Scriptable.Shop;
 using TMPro;
@@ -16,6 +17,14 @@ namespace _3._Scripts.UI.Elements.ShopSlots
         [SerializeField] private RawImage icon;
         [SerializeField] private Image table;
         [SerializeField] private Image backGlow;
+
+        private void OnEnable()
+        {
+            if (Data is not CharacterItem characterData) return;
+            
+            var characterImage = RuntimeSkinIconRenderer.Instance.GetTexture2D(Data.ID, characterData.Skin);
+            icon.texture = characterImage;
+        }
 
         public override void SetView(ShopItem item)
         {

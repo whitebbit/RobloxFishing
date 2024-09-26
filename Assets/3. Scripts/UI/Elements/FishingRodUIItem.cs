@@ -19,9 +19,8 @@ namespace _3._Scripts.UI.Elements
         [SerializeField] private Button selectButton;
         [SerializeField] private Image selectedImage;
         [SerializeField] private Image lockImage;
-
-        [SerializeField] private LocalizeStringEvent buttonText;
-
+        [SerializeField] private TMP_Text priceText;
+        
         private UpgradeItem _data;
 
         public void Initialize(UpgradeItem item)
@@ -30,6 +29,7 @@ namespace _3._Scripts.UI.Elements
             icon.texture = RuntimeFishingRodIconRenderer.Instance.GetTexture2D(item);
 
             boosterText.text = $"+{item.Booster}";
+            priceText.text = $"{WalletManager.ConvertToWallet((decimal) item.Price)} <sprite index=1>";
             selectButton.onClick.AddListener(OnClick);
             UpdateButtonState();
         }
