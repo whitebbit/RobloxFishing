@@ -16,9 +16,9 @@ MonoBehaviour:
   strength: 434000000
   additionalDropChance: 0
   catchData:
-  - {fileID: 11400000, guid: af06bc94b01f54d4aaf9087bf93df5e0, type: 2}
-  - {fileID: 11400000, guid: 82922c65fa6bfd849b13e3a144cf0f28, type: 2}
-  - {fileID: 11400000, guid: f020993d35e2e4f4991e406400c1d896, type: 2}
+  - {fileID: 11400000, guid: 5533776a9e813f1479d018a1cf852b9e, type: 2}
+  - {fileID: 11400000, guid: 5e158d84ccaa0af43bb39fb76fcad723, type: 2}
+  - {fileID: 11400000, guid: b0c57768d0d444a4d8a667bd6ae29ca3, type: 2}
   - {fileID: 11400000, guid: eee379239f92f524bae390bb09609250, type: 2}
   - {fileID: 11400000, guid: 2561e0f1760ed7a4f9f06bd9e48e632c, type: 2}
   - {fileID: 11400000, guid: 35da5b57e1037ca44ba209b0e5ed528e, type: 2}
