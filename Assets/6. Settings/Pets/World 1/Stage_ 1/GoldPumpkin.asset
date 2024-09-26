@@ -15,7 +15,7 @@ MonoBehaviour:
   id: gold_pumpkin_pet
   dropPercent: 1
   rarity: 3
-  prefab: {fileID: -6519407263713522673, guid: 08ee0b78cdc395341a16bec3cdad4b5e, type: 3}
+  prefab: {fileID: 3954579151297894951, guid: a7ab101239cda624486e4ed56749cd9f, type: 3}
   boosterType: 0
   minBooster: 39
   maxBooster: 44

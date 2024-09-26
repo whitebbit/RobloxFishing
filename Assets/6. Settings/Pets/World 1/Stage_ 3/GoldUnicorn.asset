@@ -15,7 +15,7 @@ MonoBehaviour:
   id: gold_unicorn_pet
   dropPercent: 1
   rarity: 3
-  prefab: {fileID: 5558371338247227444, guid: d740425c66232194d8393faa1b5ffaf9, type: 3}
+  prefab: {fileID: 4623204859190185603, guid: 3fd66add288d9ac4f82b8e0f3f53a55b, type: 3}
   boosterType: 0
   minBooster: 100
   maxBooster: 108

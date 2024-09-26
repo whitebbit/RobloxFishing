@@ -15,7 +15,7 @@ MonoBehaviour:
   id: deer_pet
   dropPercent: 60
   rarity: 1
-  prefab: {fileID: -2391647163173068332, guid: c6a6a56d3d8467240bdd9ebd07aa05a6, type: 3}
+  prefab: {fileID: 4286214113381390014, guid: afcc15708e7ee6d4abf38feba276bd6e, type: 3}
   boosterType: 0
   minBooster: 21
   maxBooster: 28

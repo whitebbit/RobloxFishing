@@ -15,7 +15,7 @@ MonoBehaviour:
   id: dragon_pet
   dropPercent: 15
   rarity: 2
-  prefab: {fileID: -9001622260480800953, guid: 3b5f6a06c424e704f873fbee3144e697, type: 3}
+  prefab: {fileID: 6564277338737248999, guid: c3af3ef815cd3af438d51a02737a958f, type: 3}
   boosterType: 0
   minBooster: 176
   maxBooster: 200

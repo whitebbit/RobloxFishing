@@ -15,7 +15,7 @@ MonoBehaviour:
   id: cat_pet
   dropPercent: 60
   rarity: 1
-  prefab: {fileID: 5133892070346818555, guid: f780663713dd88a4f990fe9aea849bca, type: 3}
+  prefab: {fileID: 4509235020326191410, guid: 4b080f4e50a442643ac858a38c34ef3a, type: 3}
   boosterType: 0
   minBooster: 3
   maxBooster: 6

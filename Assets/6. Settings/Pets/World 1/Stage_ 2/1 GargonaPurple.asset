@@ -15,7 +15,7 @@ MonoBehaviour:
   id: gargona_purple_pet
   dropPercent: 60
   rarity: 1
-  prefab: {fileID: 4286214113381390014, guid: afcc15708e7ee6d4abf38feba276bd6e, type: 3}
+  prefab: {fileID: 4623204859190185603, guid: 3fd66add288d9ac4f82b8e0f3f53a55b, type: 3}
   boosterType: 0
   minBooster: 45
   maxBooster: 53

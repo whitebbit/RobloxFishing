@@ -15,7 +15,7 @@ MonoBehaviour:
   id: snake_pet
   dropPercent: 15
   rarity: 2
-  prefab: {fileID: 1586886616468769640, guid: 11582de267496bb4bb31773c585cf278, type: 3}
+  prefab: {fileID: 4370059871241494540, guid: 5c936054629d28c4ba19d72c31c018f6, type: 3}
   boosterType: 0
   minBooster: 85
   maxBooster: 99
