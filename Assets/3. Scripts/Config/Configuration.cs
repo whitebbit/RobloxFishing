@@ -51,6 +51,9 @@ namespace _3._Scripts.Config
             GBGames.InGameLoadingStopped();
             GBGames.GameplayStarted();
             GBGames.GameReady();
+            
+            if(!GBGames.saves.firstSession)
+                GBGames.ShowBanner();
         }
     }
 }

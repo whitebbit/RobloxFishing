@@ -1,10 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using _3._Scripts.Config;
+using _3._Scripts.Pets;
 using _3._Scripts.Pets.Scriptables;
 using _3._Scripts.Saves;
 using _3._Scripts.UI.Elements;
+using _3._Scripts.UI.Enums;
 using _3._Scripts.UI.Panels.Base;
+using _3._Scripts.Wallet;
 using GBGamesPlugin;
 using TMPro;
 using Unity.VisualScripting;
@@ -24,11 +27,46 @@ namespace _3._Scripts.UI.Panels
         [SerializeField] private PetBooster booster;
         [Tab("Buttons")]
         [SerializeField] private Button remove;
+        [SerializeField] private Button getRandomPet;
         [SerializeField] private Button selectBest;
 
         private PetSlot _currentSlot;
         private readonly List<PetSlot> _slots = new();
+        public void ShowOffer()
+        {
+            var panel = UIManager.Instance.GetPanel<OfferPanel>();
+            var pets = Configuration.Instance.AllPets.ToList();
+            var data = pets[Random.Range(0, pets.Count)];
+            var maxBooster = GBGames.saves.petsSave.GetMaxBooster();
+            var currentBooster = Random.Range(maxBooster, maxBooster + 5);
 
+            panel.Enabled = true;
+            panel.SetOffer(data, () =>
+            {
+                GBGames.saves.petsSave.Unlock(data, currentBooster);
+                PetUnlocker.SelectBest();
+            });
+
+            panel.SetRarity(Rarity.Legendary);
+            panel.SetBoosterText($"+{WalletManager.ConvertToWallet((decimal) currentBooster)} <sprite index=1>");
+        }
+        
+        private void GetRandomPet()
+        {
+            var pets = Configuration.Instance.AllPets.ToList();
+            var data = pets[Random.Range(0, pets.Count)];
+            var maxBooster = GBGames.saves.petsSave.GetMaxBooster();
+            var currentBooster = Random.Range(maxBooster, maxBooster + 5);
+
+            GBGames.saves.petsSave.Unlock(data, currentBooster);
+            PetUnlocker.SelectBest();
+            
+            DeleteSlots();
+            InitializeSlots();
+            UpdateCount();
+            EquipBest();
+        }
+        
         public override void Initialize()
         {
             InTransition = transition;
@@ -37,6 +75,7 @@ namespace _3._Scripts.UI.Panels
             booster.gameObject.SetActive(false);
             remove.onClick.AddListener(Remove);
             selectBest.onClick.AddListener(SelectBest);
+            getRandomPet.onClick.AddListener(GetRandomPet);
         }
 
         protected override void OnOpen()

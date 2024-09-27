@@ -14,10 +14,10 @@ namespace _3._Scripts.UI.Elements.ShopSlots
     public abstract class BaseShopSlot : MonoBehaviour
     {
         [Tab("Currency")] 
-        [SerializeField] private TMP_Text price;
+        [SerializeField] protected TMP_Text price;
 
-        [SerializeField] private Image selectImage;
-        [SerializeField] private Image selectedImage;
+        [SerializeField] protected Image selectImage;
+        [SerializeField] protected Image selectedImage;
         
         [Tab("Localization")] 
         
@@ -33,7 +33,7 @@ namespace _3._Scripts.UI.Elements.ShopSlots
         
         public void SetAction(Action action) => _button.onClick.AddListener(() => action?.Invoke());
 
-        public void Select()
+        public virtual void Select()
         {
             selectedImage.gameObject.SetActive(true);
             selectImage.gameObject.SetActive(false);
@@ -41,14 +41,14 @@ namespace _3._Scripts.UI.Elements.ShopSlots
 
         }
 
-        public void Unselect()
+        public virtual void Unselect()
         {
             selectedImage.gameObject.SetActive(false);
             price.gameObject.SetActive(false);
             selectImage.gameObject.SetActive(true);
         }
 
-        public void Lock()
+        public virtual void Lock()
         {
             price.text = $"<sprite index=0>{WalletManager.ConvertToWallet((decimal) Data.Price)}";
             selectedImage.gameObject.SetActive(false);

@@ -14,6 +14,7 @@ namespace GBGamesPlugin
 
         // Ваши сохранения, если вы привыкли пользоваться сохранением через объекты. Можно задать полям значения по умолчанию     
         public bool defaultLoaded;
+        public bool firstSession;
 
         public SaveHandler<string> characterSaves = new();
         public SaveHandler<string> trailSaves = new();

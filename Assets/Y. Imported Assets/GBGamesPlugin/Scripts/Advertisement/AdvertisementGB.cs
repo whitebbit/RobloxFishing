@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using InstantGamesBridge;
 using InstantGamesBridge.Modules.Advertisement;
 using InstantGamesBridge.Modules.Device;
@@ -10,6 +11,16 @@ namespace GBGamesPlugin
     {
         public static bool NowAdsShow =>
             interstitialState == InterstitialState.Opened || rewardedState == RewardedState.Opened;
+        
+        private IEnumerator FirstSessionActivate()
+        {               
+            HideBanner();
+            yield return new WaitForSeconds(60);
+            ShowBanner();
+            yield return new WaitForSeconds(120);
+            saves.firstSession = false;
+            Save();
+        }
         
         #region Banner
 

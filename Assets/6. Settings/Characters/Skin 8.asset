@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: skin_8
   icon: {fileID: 0}
-  rarity: -1
+  rarity: 2
+  purchaseType: 1
   currencyType: 0
-  price: 100
-  skin: {fileID: 2100000, guid: 75f00a2af1a98a043bd814a684af9cb8, type: 2}
+  price: 1000
+  skin: {fileID: 2100000, guid: d25b00fd220e0a44f90073320c90a58f, type: 2}

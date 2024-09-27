@@ -305,7 +305,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 15207861625954304
-    m_Localized: The advertisement will start in {value}
+    m_Localized: Ad in {value}
     m_Metadata:
       m_Items:
       - rid: 3203987063427825692
@@ -459,6 +459,22 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 48416257434853376
     m_Localized: Fishing Rod Store
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48739949436084224
+    m_Localized: New pet
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48739995984470016
+    m_Localized: New trail
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48741885015105536
+    m_Localized: Get <sprite index=4>
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48749899944173568
+    m_Localized: Get random pet <sprite index=4>
     m_Metadata:
       m_Items: []
   references:

@@ -1,10 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using _3._Scripts.Config;
 using _3._Scripts.Currency.Enums;
 using _3._Scripts.Interactive.Interfaces;
 using _3._Scripts.Pets.Scriptables;
-using _3._Scripts.Saves;
 using _3._Scripts.UI;
 using _3._Scripts.UI.Elements;
 using _3._Scripts.UI.Enums;
@@ -99,7 +97,11 @@ namespace _3._Scripts.Pets
                 return;
             }
 
-            if (!WalletManager.TrySpend(CurrencyType.Second, _price)) return;
+            if (!WalletManager.TrySpend(CurrencyType.Second, _price))
+            {
+                ShowOffer();
+                return;
+            }
 
             var panel = UIManager.Instance.GetPanel<PetUnlockerPanel>();
             if (panel.Enabled) return;
@@ -109,6 +111,9 @@ namespace _3._Scripts.Pets
             panel.UnlockPet(pet);
 
             SelectBest();
+
+            if (pet.Rarity == Rarity.Legendary)
+                GBGames.saves.achievementSaves.Update("legendary_pet", 1);
         }
 
         public static void SelectBest()
@@ -117,6 +122,7 @@ namespace _3._Scripts.Pets
             if (best.Count <= 0) return;
 
             Player.Player.instance.PetsHandler.ClearPets();
+            GBGames.saves.petsSave.selected.Clear();
 
             for (var i = 0; i < 3; i++)
             {
@@ -134,6 +140,23 @@ namespace _3._Scripts.Pets
         {
             eggModel.gameObject.SetActive(true);
             canvas.gameObject.SetActive(false);
+        }
+
+        public void ShowOffer()
+        {
+            var panel = UIManager.Instance.GetPanel<OfferPanel>();
+            var data = _data[Random.Range(0, _data.Count)];
+            var booster = data.RandomBooster;
+            
+            panel.Enabled = true;
+            panel.SetOffer(data, () =>
+            {
+                GBGames.saves.petsSave.Unlock(data, booster);
+                SelectBest();
+            });
+
+            panel.SetRarity(data.Rarity);
+            panel.SetBoosterText($"+{WalletManager.ConvertToWallet(booster)} <sprite index=1>");
         }
     }
 }

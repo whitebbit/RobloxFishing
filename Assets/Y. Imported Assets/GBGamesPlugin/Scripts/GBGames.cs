@@ -58,8 +58,14 @@ namespace GBGamesPlugin
 
             minimumDelayBetweenInterstitial = instance.settings.minimumDelayBetweenInterstitial;
 
-            if (instance.settings.enableBannerAutomatically)
+            if (saves.firstSession)
+            {
+                StartCoroutine(FirstSessionActivate());
+            }
+            else
+            {
                 ShowBanner();
+            }
         }
 
         private void Platform()

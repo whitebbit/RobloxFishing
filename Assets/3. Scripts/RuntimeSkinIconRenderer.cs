@@ -8,6 +8,8 @@ namespace _3._Scripts
 {
     public class RuntimeSkinIconRenderer : Singleton<RuntimeSkinIconRenderer>
     {
+        [SerializeField] private float green;
+        
         public Camera renderCamera;
         public RenderTexture renderTexture;
         public List<SkinnedMeshRenderer> skinnedMeshRenderers = new();
@@ -46,9 +48,8 @@ namespace _3._Scripts
             var pixels = renderedTexture.GetPixels32();
             for (var i = 0; i < pixels.Length; i++)
             {
-               
                 var pixel = pixels[i];
-                if (pixel.g <= pixel.r + 25 || pixel.g <= pixel.b + 25) continue;
+                if (pixel.g <= pixel.r + green || pixel.g <= pixel.b + green) continue;
                 pixel.a = 0; 
                 pixels[i] = pixel;
             }

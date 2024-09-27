@@ -447,6 +447,22 @@ MonoBehaviour:
     m_Key: fishingrod_shop
     m_Metadata:
       m_Items: []
+  - m_Id: 48739949436084224
+    m_Key: offer_pet
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48739995984470016
+    m_Key: offer_trail
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48741885015105536
+    m_Key: get_ad
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48749899944173568
+    m_Key: get_random_pet
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
