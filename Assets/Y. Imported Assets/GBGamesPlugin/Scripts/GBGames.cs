@@ -60,6 +60,7 @@ namespace GBGamesPlugin
 
             if (saves.firstSession)
             {
+                HideBanner();
                 StartCoroutine(FirstSessionActivate());
             }
             else

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using _3._Scripts.Config;
 using _3._Scripts.UI.Elements;
 using _3._Scripts.UI.Panels.Base;
@@ -12,7 +13,7 @@ namespace _3._Scripts.UI.Panels
         [SerializeField] private Transform container;
 
         private readonly List<FishingRodUIItem> _list = new();
-
+        public event Action ONOpen;
         public override void Initialize()
         {
             base.Initialize();
@@ -22,6 +23,7 @@ namespace _3._Scripts.UI.Panels
         protected override void OnOpen()
         {
             base.OnOpen();
+            ONOpen?.Invoke();
             UpdateAllList();
         }
 

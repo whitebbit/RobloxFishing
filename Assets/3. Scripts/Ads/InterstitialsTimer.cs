@@ -19,6 +19,8 @@ namespace _3._Scripts.Ads
 {
     public class InterstitialsTimer : Singleton<InterstitialsTimer>
     {
+        [SerializeField] private RemoteConfig<bool> interEnable;
+
         [SerializeField] private CanvasGroup secondsPanelObject;
         [SerializeField] private LocalizeStringEvent localizedText;
         [SerializeField] private CurrencyCounterEffect counterEffect;
@@ -29,7 +31,7 @@ namespace _3._Scripts.Ads
         private void Start()
         {
             secondsPanelObject.alpha = 0;
-
+            if (!interEnable.Value) return;
             StartCoroutine(CheckTimerAd());
         }
 

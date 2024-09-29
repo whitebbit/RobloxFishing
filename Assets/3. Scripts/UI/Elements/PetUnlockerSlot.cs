@@ -16,7 +16,6 @@ namespace _3._Scripts.UI.Elements
         {
             icon.sprite = image;
             percent.text = $"{percentValue}%";
-            Debug.Log(Configuration.Instance.GetRarityTable(rarity).MainColor);
             table.color = Configuration.Instance.GetRarityTable(rarity).MainColor;
             
         }

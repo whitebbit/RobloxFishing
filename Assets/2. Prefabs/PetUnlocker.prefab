@@ -250,7 +250,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 5, y: 3, z: 7.49}
-  m_Center: {x: 0, y: 1.5, z: 3.77}
+  m_Center: {x: 0, y: 1.5, z: 4.33}
 --- !u!1 &2572126405728822446
 GameObject:
   m_ObjectHideFlags: 0
@@ -551,7 +551,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   progressImage: {fileID: 5786347265678095241}
-  fillSpeed: 1
+  fillSpeed: 0.5
   interactive: {fileID: 5044448991732601564}
 --- !u!65 &1774865063555214633
 BoxCollider:
@@ -572,7 +572,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 5.55, y: 2, z: 2}
+  m_Size: {x: 5.55, y: 2, z: 4.32}
   m_Center: {x: 0, y: 1, z: 1.54}
 --- !u!1 &3615785361690555134
 GameObject:

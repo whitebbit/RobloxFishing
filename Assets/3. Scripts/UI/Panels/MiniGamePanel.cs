@@ -98,7 +98,8 @@ namespace _3._Scripts.UI.Panels
             _fillAmount = 0.5f;
             _currentEnemy = data;
             rewardCatch.SetState(false);
-            catchList.Initialize(StageController.Instance.CurrentStageID, _currentEnemy.CatchData, _currentEnemy.AdditionalDropChance);
+            catchList.Initialize(StageController.Instance.CurrentStageID, _currentEnemy.CatchData,
+                _currentEnemy.AdditionalDropChance);
 
             SetComponentsState(false);
 
@@ -206,11 +207,11 @@ namespace _3._Scripts.UI.Panels
             }
 
             if (!BoostersHandler.Instance.GetBoosterState("auto_fight")) return;
-            
+
             _timeToClick -= Time.deltaTime;
-            
+
             if (!(_timeToClick <= 0)) return;
-            
+
             _timeToClick = 0.5f;
             _fillAmount += GetPlayerFillRate();
         }
@@ -223,6 +224,7 @@ namespace _3._Scripts.UI.Panels
 
         private void CheckGameEnd()
         {
+            if (!_started) return;
             switch (_fillAmount)
             {
                 case <= 0:
@@ -236,6 +238,7 @@ namespace _3._Scripts.UI.Panels
 
         private IEnumerator RestartGame()
         {
+            _started = false;
             yield return new WaitForSeconds(2f);
             StartFishing(_player, _enemy, _currentEnemy, OnStartFishing, OnEnd);
         }

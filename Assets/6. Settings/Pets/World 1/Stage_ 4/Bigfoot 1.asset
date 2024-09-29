@@ -13,10 +13,13 @@ MonoBehaviour:
   m_Name: Bigfoot 1
   m_EditorClassIdentifier: 
   id: bigfoot_pet
-  dropPercent: 15
+  icon: {fileID: 21300000, guid: 6782aaa6532733b4a918652153e8adf6, type: 3}
   rarity: 2
-  prefab: {fileID: 2239006388478724978, guid: fc98eabd2de5c7546811b46e9fe935c0, type: 3}
+  purchaseType: 0
+  currencyType: 0
+  price: 0
+  dropPercent: 15
+  prefab: {fileID: -3804529052193921576, guid: 62955583a790a3242b1868ed290a4828, type: 3}
   boosterType: 0
   minBooster: 115
   maxBooster: 124
-  icon: {fileID: 21300000, guid: 6782aaa6532733b4a918652153e8adf6, type: 3}

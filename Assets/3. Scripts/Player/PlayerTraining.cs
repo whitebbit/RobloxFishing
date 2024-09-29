@@ -24,6 +24,7 @@ namespace _3._Scripts.Player
         private void Start()
         {
             FishingRod.SetState(false);
+            FishingLine.Instance.SetStartPoint(FishingRod.FishingLineStartPoint.transform);
         }
 
         private void Update()
