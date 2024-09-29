@@ -147,7 +147,7 @@ namespace _3._Scripts.Pets
             var panel = UIManager.Instance.GetPanel<OfferPanel>();
             var data = _data[Random.Range(0, _data.Count)];
             var booster = data.RandomBooster;
-            
+
             panel.Enabled = true;
             panel.SetOffer(data, () =>
             {

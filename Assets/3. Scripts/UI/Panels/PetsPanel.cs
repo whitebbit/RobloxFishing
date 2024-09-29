@@ -34,6 +34,12 @@ namespace _3._Scripts.UI.Panels
         private readonly List<PetSlot> _slots = new();
         public void ShowOffer()
         {
+            if (GBGames.saves.petsSave.MaxUnlocked(25))
+            {
+                NotificationPanel.Instance.ShowNotification("max_pet_unlocked");
+                return;
+            }
+            
             var panel = UIManager.Instance.GetPanel<OfferPanel>();
             var pets = Configuration.Instance.AllPets.ToList();
             var data = pets[Random.Range(0, pets.Count)];
@@ -53,6 +59,12 @@ namespace _3._Scripts.UI.Panels
         
         private void GetRandomPet()
         {
+            if (GBGames.saves.petsSave.MaxUnlocked(25))
+            {
+                NotificationPanel.Instance.ShowNotification("max_pet_unlocked");
+                return;
+            }
+            
             var pets = Configuration.Instance.AllPets.ToList();
             var data = pets[Random.Range(0, pets.Count)];
             var maxBooster = GBGames.saves.petsSave.GetMaxBooster();

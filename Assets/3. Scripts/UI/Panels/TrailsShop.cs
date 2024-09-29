@@ -32,7 +32,7 @@ namespace _3._Scripts.UI.Panels
         {
             if (!ItemUnlocked(id)) return false;
             if (IsSelected(id)) return false;
-            
+
             GBGames.saves.trailSaves.SetCurrent(id);
             GBGames.instance.Save();
             Player.Player.instance.TrailHandler.SetTrail(id);
@@ -47,7 +47,7 @@ namespace _3._Scripts.UI.Panels
             var slot = GetSlot(id).Data;
 
             if (!WalletManager.TrySpend(slot.CurrencyType, slot.Price)) return false;
-            
+
             GBGames.saves.trailSaves.Unlock(id);
             Select(id);
             return true;
@@ -57,7 +57,7 @@ namespace _3._Scripts.UI.Panels
         {
             slot.SetIconColor(data.Color);
         }
-        
+
         public void ShowOffer()
         {
             var panel = UIManager.Instance.GetPanel<OfferPanel>();
@@ -66,8 +66,10 @@ namespace _3._Scripts.UI.Panels
             var currentIndex = list.IndexOf(current);
             var nextItem = list[(currentIndex + 1) % list.Count];
 
+            if (currentIndex + 1 >= list.Count) return;
+
             panel.Enabled = true;
-            
+
             panel.SetOffer(nextItem, () =>
             {
                 var id = nextItem.ID;
@@ -76,7 +78,7 @@ namespace _3._Scripts.UI.Panels
                 GBGames.instance.Save();
                 Player.Player.instance.TrailHandler.SetTrail(id);
             });
-            
+
             panel.SetRarity(nextItem.Rarity);
             panel.SetIconColor(nextItem.Color);
             panel.SetBoosterText(nextItem.Title());
